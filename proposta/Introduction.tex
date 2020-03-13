@@ -9,7 +9,8 @@
 
 % Packages a utilizar e respetivos parâmetros.
 \usepackage{inputenc}
-\usepackage[portuguese]{babel}
+\usepackage{enumitem}
+\usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{url}
 % Definições das dimensões das páginas
@@ -33,7 +34,7 @@
 \title{%
   \vspace{-50mm}
   \begin{minipage}[l]{150mm}
-    \resizebox{50mm}{!}{\includegraphics{./img/logo_isel.png}}
+    \resizebox{50mm}{!}{\includegraphics{./figures/logo_isel.png}}
   \end{minipage}\\
   \vspace{20mm}
   \textbf{Proposta de Projeto}
@@ -63,7 +64,7 @@
 %
 \date{%
 \vspace{60mm}
-Relatório de  de projeto realizado no âmbito de Projecto e Seminário,\\
+Proposta de projeto realizado no âmbito de Projecto e Seminário,\\
 do curso de licenciatura em Engenharia Informática e de Computadores\\
 Semestre de Verão 2019/2020
 \vspace{20mm}\\
@@ -79,7 +80,7 @@ Março de 2020}
     
 \section*{Requirements}
 
-In order to create a fully functional, eficient and trustworthy reactive web application that will work as a collaboration platform for companies to use, there must be a set of requirements that are predefined in due time. The understanding of the OutSystems platform and the exploration of its usability is a key factor that will provide a concise implementation of these requirements. The main requirements are described as:
+In order to create a fully functional, efficient and trustworthy reactive web application that will work as a collaboration platform for companies to use, there must be a set of requirements that are predefined in due time. The understanding of the OutSystems platform and the exploration of its usability is a key factor that will provide a concise implementation of these requirements. The main requirements are described as:
   
 \begin{enumerate}
 \item Registration and authentication in the collaboration platform.
@@ -95,28 +96,25 @@ There were defined optional requirements, to be implemented according to how the
 \begin{enumerate}
 \item Generation of reports that are defined according to how the internal needs of the company/events were fulfilled.
 \item Registration of who applies the most to what kinds of events or internal needs, creating a top three or top five representation for each event/internal need. 
-\item Indivual indication of presence or arrival at the place of an event, that can be observed by other participants.
+\item Individual indication of presence or arrival at the place of an event, that can be observed by other participants.
 \end{enumerate}
 
 \section*{Schedule} 
 
 The project's management and schedule (fig. 1) will follow an agile [1] designated methodology, where the SCRUM framework [2] will be used since it is the most well referenced and it enables to increase the productivty and quality of the development. Consequently, the project will be divided in cycles called Sprints, where the development of the project is focused on concluding an incremental solution that results from a previously established objective. Each incremental solution  is a fully functional, integrated, tested and documented application in which the final sprint will correspond to the delivery of the final product. In Figure 1 bellow, we can verify the schedule of all the sprints and phases included in the project.
 
-
-//TODO POR IMAGEM 
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{./figures/"Timeline Projeto LEIC.png"}
+  \caption{Project Timeline}
+  \label{fig:schedule}
+\end{figure}
 
 The initial phase of the project's development consists in making the Outsystems tutorials followed by a requirements analysis. The sprints that will be made whilst the development of the project will start with it's planning and end with a demonstration and the elaboration of the project's report which will be made progressively throughout the sprints.
 
-\section*{REFERENCES}
-
-[1] https://www.agilealliance.org/agile101/the-agile-manifesto 
-[2] https://www.scrum.org/resources/scrum-guide
-
-
-
-
-
-
-
+\section*{References}
+\begin{enumerate}[label={[\arabic*]}]
+  \item https://www.agilealliance.org/agile101/the-agile-manifesto
+  \item https://www.scrum.org/resources/scrum-guide
+\end{enumerate}
 
 \end{document}
