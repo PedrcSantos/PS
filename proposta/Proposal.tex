@@ -10,8 +10,10 @@
 % Packages a utilizar e respetivos parâmetros.
 \usepackage{indentfirst}
 \usepackage{inputenc}
-\usepackage[portuguese]{babel}
+\usepackage{enumitem}
+\usepackage[english]{babel}
 \usepackage{graphicx}
+\usepackage{float}
 \usepackage{url}
 % Definições das dimensões das páginas
 \setlength{\textheight}{24.00cm}
@@ -32,7 +34,7 @@
 %title
 %
 \title{%
-  \vspace{-50mm}
+  \vspace{-55mm}
   \begin{minipage}[l]{150mm}
     \resizebox{50mm}{!}{\includegraphics{./figures/logo_isel.png}}
   \end{minipage}\\
@@ -63,12 +65,20 @@
 % date
 %
 \date{%
-\vspace{60mm}
-Relatório de  de projeto realizado no âmbito de Projecto e Seminário,\\
+\vspace{30mm}
+\begin{center}
+  \begin{tabular}{cc}
+    & {Orientadores:} \\
+    & Paula Graça, ISEL, paula.graca@isel.pt \\
+    & Diogo Pacheco, Do iT Lean, diogo.pacheco@doitlean.com\\
+  \end{tabular}\\
+\end{center}
+\vspace{20mm}
+Proposta de projeto realizado no âmbito de Projecto e Seminário,\\
 do curso de licenciatura em Engenharia Informática e de Computadores\\
 Semestre de Verão 2019/2020
-\vspace{20mm}\\
-Março de 2020}
+\vspace{10mm}\\
+14 de Março de 2020}
 
 \begin{document}
 \thispagestyle{empty}
@@ -109,16 +119,18 @@ The reactive web application will be developed using a low-code platform named O
 \item  \textbf{Application Services:} Manages the applications during runtime, through the execution of scheduled batches and asynchronous logging services that allow to store events such as errors, audits and performance metrics.
 \end{enumerate}
 
-//TODO POR FOTO DA ARQUITETURA OUTSYSTEMS PASSA A SER FIGURA 1
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{./figures/Architecture.png}
+  \caption{OutSystems Architecture}\label{fig:architecture}
+\end{figure}
 
 \section*{Schedule} 
 
 The project's management and schedule (fig. 2) will follow an agile [2] designated methodology, where the SCRUM framework [3] will be used since it is the most well referenced and it enables to increase the productivty and quality of the development. Consequently, the project will be divided in cycles called Sprints, where the development of the project is focused on concluding an incremental solution that results from a previously established objective. Each incremental solution  is a fully functional, integrated, tested and documented application in which the final sprint will correspond to the delivery of the final product. In Figure 2 bellow, we can verify the schedule of all the sprints and phases included in the project.
 
-\begin{figure}[h]
-  \includegraphics[width=\linewidth]{./figures/"Timeline Projeto LEIC.png"}
-  \caption{Project Timeline}
-  \label{fig:schedule}
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{./figures/Timeline Projeto LEIC.png}
+  \caption{Project Timeline}\label{fig:schedule}
 \end{figure}
 
 The initial phase of the project's development consists in making the Outsystems tutorials followed by a requirements analysis. The sprints that will be made whilst the development of the project will start with its planning and end with a demonstration and the elaboration of the project's report which will be made progressively throughout the sprints.
