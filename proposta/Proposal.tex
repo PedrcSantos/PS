@@ -99,9 +99,21 @@ There were defined optional requirements, to be implemented according to how the
 \item Individual indication of presence or arrival at the place of an event, that can be observed by other participants.
 \end{enumerate}
 
+\section*{Architecture}
+
+The reactive web application will be developed using a low-code platform named OutSystems, that will enable a faster and more efficient development. Its architecture is presented in figure 1. As shown bellow, the main component of the platform is the Platform Server that allows to generate, optimize, compile and publish the developed applications. This component uses the following services:
+
+\begin{enumerate}
+\item \textbf{Code Generator:} Uses the modeled application in Service Studio and generates the necessary code using standard technologies (such as .NET, SQL Server, HTML, etc.) for the creation of an optimized and secure application.
+\item \textbf{ Deployment Services:} Publishes the code that was previously generated in a server, assuring that the application is installed consistently on each front-end of the infrastructure.
+\item  \textbf{Application Services:} Manages the applications during runtime, through the execution of scheduled batches and asynchronous logging services that allow to store events such as errors, audits and performance metrics.
+\end{enumerate}
+
+//TODO POR FOTO DA ARQUITETURA OUTSYSTEMS PASSA A SER FIGURA 1
+
 \section*{Schedule} 
 
-The project's management and schedule (fig. 1) will follow an agile [2] designated methodology, where the SCRUM framework [3] will be used since it is the most well referenced and it enables to increase the productivty and quality of the development. Consequently, the project will be divided in cycles called Sprints, where the development of the project is focused on concluding an incremental solution that results from a previously established objective. Each incremental solution  is a fully functional, integrated, tested and documented application in which the final sprint will correspond to the delivery of the final product. In Figure 1 bellow, we can verify the schedule of all the sprints and phases included in the project.
+The project's management and schedule (fig. 2) will follow an agile [2] designated methodology, where the SCRUM framework [3] will be used since it is the most well referenced and it enables to increase the productivty and quality of the development. Consequently, the project will be divided in cycles called Sprints, where the development of the project is focused on concluding an incremental solution that results from a previously established objective. Each incremental solution  is a fully functional, integrated, tested and documented application in which the final sprint will correspond to the delivery of the final product. In Figure 2 bellow, we can verify the schedule of all the sprints and phases included in the project.
 
 \begin{figure}[h]
   \includegraphics[width=\linewidth]{./figures/"Timeline Projeto LEIC.png"}
