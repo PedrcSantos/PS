@@ -1,6 +1,0 @@
-1. O utilizador ao iniciar a aplicação encontrará um ecrã onde poderá efetuar o log in com as suas credenciais. 
-No caso de ainda não estar registado na aplicação, o mesmo poderá ser redirecionado para um ecrã de sign up carregando no 
-botão "sign up" onde se poderá registar. 
-
-2. Display of a screen which contains the company's internal necessities organized by category. For each necessity 
-that is clicked by the user it will show its description (in a new screen or open something in the same screen?)
