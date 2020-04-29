@@ -1,8 +1,20 @@
+\subsection{Visualização de necessidades, com possibilidade de aplicar filtros} \label{secNecessities}
+
+O utilizador ao carregar no botão \textit{Necessities} presente na barra da aplicação, será redirecionado para o ecrã responsável pela apresentação das necessidades. 
+O intuito do mesmo consiste na apresentação das necessidades criadas pela comunidade empresarial, sendo possível aplicar filtros e/ou pesquisar pelo título de uma necessidade de modo a que sejam apresentadas apenas as necessidades alvo.
+As necessidades são apresentadas num \textit{widget} tabela, cujas colunas apresentam informação relevante como título, categoria, prioridade, localização e o número de participantes até ao momento. Sempre que o utilizador pretender criar uma nova necessidade, apenas tem que carregar no botão \textit{Create Necessity} e será redirecionado para um novo ecrã, onde poderá completar a criação.
+A seleção do título de uma necessidade promove a navegação para o ecrã dos detalhes da mesma. Se se verificar que o utilizador é o autor de uma das necessidades poderá editá-la carregando no ícone que aparece na ultima coluna, da linha em questão, da tabela.
+A barra de pesquisa permite que o utilizador procure uma necessidade pelo seu título.
+Os filtros aplicáveis são apresentados em três \textit{widgets} distintos. Dois \textit{dropdowns}, um para permitir a escolha de qual a prioridade e outro para distinguir entre necessidades no exterior e no interior das instalações da empresa.
+É ainda apresentado um \textit{widget} tabela, de uma só coluna, que permite a seleção das categorias a que as necessidades pertencem, selecionando uma \textit{checkbox}.  
+Sempre que exista uma mudança na seleção que algum dos \textit{widgets} de filtragem de necessidades ou uma introdução de texto na barra de pesquisa, a tabela é atualizada para apresentar apenas aquelas que verifiquem as características alvo. 
+
+
 \subsection{Criação e edição de necessidades}\label{secNecessityCreation}
 
-O utilizador irá ser redirecionado para este ecrã sempre que cria ou altera uma necessidade.
+O utilizador irá ser redirecionado para este ecrã sempre que tenha a intenção de criar ou alterar uma necessidade.
 A funcionalidade deste ecrã é criar necessidades ou alterar necessidades existentes.
-Quando um utilizador clica no botão \textit{Create Necessity} virá para este ecrã com o intuito de criar uma necessidade.
+Quando um utilizador clica no botão \textit{Create Necessity}, virá para este ecrã com o intuito de criar uma necessidade.
 Neste caso, o ecrã apresentará os vários campos necessários para a criação desta.
 Se o utilizador desejar editar uma necessidade, primeiramente, só o poderá fazer se for o autor desta.
 Neste caso, o ecrã apresentará os campos já preenchidos com os dados atuais da necessidade e a possibilidade de os alterar livremente.
@@ -12,3 +24,22 @@ Os botões presentes neste ecrã são apenas dois:
     \item \textit{Cancel} - aprensenta um \textit{pop-up} a pedir a confirmação do utilizador, após confirmação a criação ou edição será cancelada e o utilizador redirecionado para o ecrã onde estava anteriormente.
     \item \textit{Save} - guarda as alterações a efetuar na necessidade e cria uma ligação ao servidor para modificar a base de dados com uma nova necessidade ou alterando uma necessidade pré-existente.
 \end{enumerate}
+
+\subsection{4 Layer Canvas} \label{4layerCanvas}
+
+Para desenharmos a arquitetura da nossa solução, seguimos a metodologia da plataforma \textit{OutSystems}, a \textit{4 Layer Canvas}.
+
+
+//FIGURA 4CL
+
+
+Esta metodologia propõe que se estruture as várias funcionalidades da aplicação por quatro camadas, sendo estas, começando por baixo: 
+\begin{enumerate}
+    \item \textit{Library Layer} - Aqui devem constar os módulos que são transversais ao domínio do problema, tais como: temas, bibliotecas, etc. 
+    \item \textit{Core Layer} - Módulos referentes à lógica de negócio, modelo de dados e \textit{server actions}. 
+    \item \textit{End User Layer} - Nesta camada é tratada toda a parte de interface e experiência do utilizador, fazendo uso das camadas anteriores. 
+    \item \textit{Orchestration Layer} - Camada que coordena a comunicação entre várias aplicações. 
+\end{enumerate}
+
+É importante verificar que, apesar da metodologia apresentar quatro camadas, a nossa arquitetura apenas faz uso das primeiras três devido ao nosso projeto consistir em apenas uma aplicação reactive, e não havendo necessidade de coordenar interações com outras aplicações na camada de orquestração. Posto isto, a nossa aplicação assenta sobre cinco módulos, representados pela figura XXX. Começando pela \textit{Library Layer} verificamos que são utilizados os módulos relativos à integração da aplicação com o \textit{Google Maps} e com o \textit{Full Calendar Reactive}. De seguida temos a \textit{ Core Layer}, onde definimos as entidades de domínio e suas operações. Por fim a \textit{ End User Layer} onde são definidos os ecrãs e a lógica de cliente. 
+
