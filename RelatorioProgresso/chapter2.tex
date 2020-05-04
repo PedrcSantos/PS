@@ -1,0 +1,165 @@
+\chapter{Formulação do Problema}\label{chapter:formulacaoDoProblema}
+
+\section{Estado da Arte}\label{sec:estadoDaArte}
+As plataformas de colaboração existentes no mercado atual tais como a \textit{Microsoft SharePoint} ou a \textit{BaseCamp} apresentam um elevado nível de complexidade, incluindo ferramentas como calendários partilhados, partilha de ficheiros, mensagens instantâneas, armazenamento na \textit{cloud}, video-conferência, entre outros. A aplicação desenvolvida neste âmbito não procura igualar todas as funcionalidades das plataformas já existentes, mas sim agilizar a dinâmica de atividades internas que ocorrem diariamente nas empresas. Visa essencialmente facilitar a procura de pessoas para cumprir certas necessidades que existam no âmbito das atividades internas da empresa.
+
+\section{Análise de requisitos}\label{sec:requisitos}
+
+\subsection{Registo e Autenticação}\label{subsec:login}
+Para desenvolver a funcionalidade de registo e autenticação na plataforma de colaboração é necessário existir uma tabela 
+na base de dados que guarde as credenciais e informação básica de cada utilizador, nomeadamente 
+o email, password, username, primeiro e último nome. 
+Esta tabela, tanto serve para efeitos de registo de um utilizador, como para verificação posterior da sua autenticação. 
+Os utilizadores não necessitam de fazer registo na aplicação, visto que é suposto usaram na plataforma de colaboração proposta, 
+as mesmas credenciais atribuídas pela empresa para e-mail e autenticação nas outras aplicações internas.
+
+Relativamente ao ecrã de \textit{Login} ilustrado na, este suporta:
+
+\begin{itemize}
+    \item Duas caixas de texto onde o utilizador introduz o seu e-mail e password.
+    \item Um botão identificado como \textit{Login} que desencadeia o processo de verificação das credencias introduzidas.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{figures/Login Use Case.jpeg}
+    \caption{\textit{Use Case} --- \textit{Login}.}\label{fig:uc:login}
+\end{figure}
+
+O utilizador com permissões de administrador tem acesso ao \textit{back-office} onde pode criar ou remover categorias.
+
+\subsection{\textit{Home Page --- Dashboard}}\label{subsec:dashboard}
+
+Após o \textit{login} na aplicação o utilizador será redirecionado para um novo ecrã que irá conter um \textit{dashboard} com o intuito de organizar e 
+apresentar a informação de uma forma apelativa. As necessidades a que o utilizador se candidatou serão apresentadas neste \textit{dashboard}. 
+O mesmo irá conter também uma secção com estatística relativa ao número de necessidades que existem em cada categoria. 
+A seleção de uma das categorias na estatística redirecionará o utilizador para o ecrã das necessidades, 
+apresentando a lista das mesmas com o filtro correspondente à categoria selecionada. 
+A \textit{dashboard} apresenta também as últimas necessidades publicadas na plataforma com a opção de as filtrar.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{figures/General Actions.jpeg}
+    \caption{\textit{Use Case} --- Ações gerais.}\label{fig:uc:generalactions}
+\end{figure}
+
+\subsection{Registo das necessidades internas da empresa, gestão de candidaturas, notificações e integração com o google maps}\label{subsec:necessitiesCandidatesNotificationsGoogleMaps}
+
+A funcionalidade de registo de necessidades internas da empresa estão organizadas em categorias de modo a facilitar a navegação do utilizador pelas mesmas.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{figures/Necessities.jpeg}
+    \caption{\textit{Use Case} --- Necessidades.}\label{fig:uc:necessities}
+\end{figure}
+
+Para isso, é fundamental que exista um ecrã que apresente todas as necessidades da empresa sobre a forma de uma lista. 
+Um utilizador, caso queira registar uma necessidade, irá escolher a categoria que melhor se adequa à mesma. 
+Caso não exista, este, se tiver permissões de admin, poderá criar uma categoria nova no \textit{back-office} da aplicação. 
+Neste ecrã será possível filtrar as necessidades pela sua categoria e também pelo seu grau de urgência.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{figures/Categories use case.jpeg}
+    \caption{\textit{Use Case} --- Categorias.}\label{fig:uc:categories}
+\end{figure}
+
+Posto isto, definimos duas categorias caracterizadas pelas necessidades internas serem realizadas nas instalações da empresa (\textit{Inside The Company}), 
+ou no exterior (\textit{Outside The Company}). 
+Definimos também um segundo conjunto de categorias que permitem um melhor agrupamento das necessidades, como por exemplo \textit{Brown Bags}, 
+\textit{Qualification Offers}, \textit{Software Components Development} ou \textit{Planning of events}. 
+Foi ainda definido um terceiro grupo de categorias que poderá tomar os valores \textit{High}, \textit{Medium} ou \textit{Low}, 
+correspondentes ao grau de prioridade com que as necessidades foram criadas. 
+A ideia principal é possibilitar a conjugação de categorias, funcionando como filtros através da seleção do tipo da necessidade, 
+se se realiza no interior ou exterior das instalações da empresa e qual a sua prioridade. 
+A seleção dos filtros irá levar a uma atualização da lista para conter apenas necessidades que se enquadrem nessa mesma seleção. 
+Este ecrã apresenta ainda um botão que servirá para criar uma nova necessidade, criação esta acessível a todos os utilizadores autenticados, 
+que decorrerá num novo ecrã e que terá como opção (obrigatória) de criação as categorias a qual associar a nova necessidade. 
+Ao clicar numa necessidade, será apresentado um novo ecrã com os detalhes da mesma e a possibilidade do utilizador se candidatar, 
+se for uma necessidade com esse propósito. O autor da necessidade irá receber a notificação de que existe um novo candidato, 
+dando-lhe a opção de após carregar na notificação ser redirecionado para o ecrã de detalhe, podendo ler a descrição realizada pelo candidato e aceitar ou rejeitar. 
+O candidato irá receber uma notificação nos casos em que a necessidade for fechada/cancelada, e quando a sua candidatura for aceite/recusada. 
+Um utilizador ao criar uma necessidade (e enquanto a mesma não for fechada) terá, neste ecrã de detalhe da mesma, a possibilidade de a editar ou de a eliminar. 
+Terá também a possibilidade de ver quem já se candidatou á necessidade criada pelo próprio, se a mesma apresentar esse propósito. 
+Uma necessidade que decorra fora das instalações da empresa, no ato da sua criação, o autor tem a possibilidade de indicar o local através da plataforma Google Maps
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{figures/Necessity.jpeg}
+    \caption{\textit{Use Case} --- Necessidade.}\label{fig:uc:necessity}
+\end{figure}
+
+De modo a organizar eventos ou feiras de emprego, o utilizador seleciona a categoria \textit{Planning of events}.
+
+Com o objetivo de realizar apresentações informais de partilha de conhecimento o utilizador seleciona a categoria “Brown Bags. 
+Todos os utilizadores devidamente autenticados poderão candidatar-se para assistir a uma dada apresentação ou para a orientar. 
+No contexto desta necessidade interna é definida uma linha temporal que consiste numa primeira fase de candidaturas para escolha do orientador 
+ou orientadores que irão conduzir a apresentação, seguida de uma segunda fase de candidaturas para utilizadores que tenham decidido assistir à apresentação. 
+O autor de uma apresentação, no ecrã de detalhe da mesma, terá acesso a quem se candidatou para a orientar, podendo escolher um ou mais orientadores 
+com base na descrição apresentada pelos mesmos. 
+Numa segunda fase após a escolha do(s) mesmo(s), o autor e os orientadores terão a possibilidade de ver os utilizadores que se 
+candidataram a assistir ao brown bag, recebendo periodicamente uma notificação com o número de participantes. 
+Nesta atividade interna são aceites todos os candidatos que pretendam assistir.
+
+A categoria “Make a Post” tem como objetivo a criação de um post numa rede social ou blog. 
+O utilizador ao filtrar esta categoria ser-lhe-á apresentado a lista dos posts. 
+O utilizador ao carregar num post navegará para um novo ecrã que apresentará os detalhes do mesmo. 
+Os detalhes apresentados para um post já publicado incluem uma breve descrição, um link para o post e a pessoa que o realizou. 
+Os detalhes para um post não publicado incluem a possibilidade de o utilizador se candidatar para o realizar, assim como uma breve descrição.
+
+Com o objetivo de possibilitar ofertas de formação dentro da empresa, foi definida a categoria “Qualification Offers”. 
+Esta categoria apresenta uma dinâmica semelhante à categoria “Informal Presentations”, visto que ambas procuram a partilha de 
+conhecimento por parte de um ou mais oradores, definidos numa primeira instância, seguida de uma segunda fase em que os utilizadores 
+poderão manifestar a sua intenção em participar. 
+O principal fator que distingue estas duas categorias é a duração da atividade: 
+uma oferta de formação decorrerá ao longo de várias sessões satisfazendo um número total de horas apresentado na descrição da necessidade, 
+ao contrário de uma apresentação informal que é um acontecimento único de duração na ordem dos minutos. 
+Posto isto, a dinâmica apresentada nesta categoria quanto ao ecrã de detalhes e metodologia será semelhante à da categoria “Brown Bags”.
+
+A categoria “Software Components Development” tem como objetivo propor projetos e procurar participantes para os mesmos, no âmbito de desenvolvimento de software. 
+Ao ser selecionada uma proposta será apresentado um novo ecrã com a sua descrição, detalhes e com um botão que permitirá ao utilizador 
+candidatar-se para integrar o projeto.
+
+Com o objetivo de proporcionar oportunidades de progressão na carreira de forma espontânea, por exemplo, 
+haver uma vaga para uma posição de tech lead num novo projeto, e os seniors interessados poderem candidatar-se a esta posição. 
+O utilizador após selecionar a categoria “Opportunities for Career Progression” serão apresentadas todas as necessidades correspondentes, sob a forma de uma lista.
+
+A categoria \textit{Off-work Activities} permite a criação de necessidades com o intuito de realizar atividades lúdicas.
+Um autor desta atividade tem de endereçar os meios de transporte bem como se existe almoço e/ou jantar e as ementas para a respetiva refeição. 
+A funcionalidade de candidaturas nesta categoria funciona de forma a que cada utilizador manifeste a sua vontade em participar no evento.
+Antes do \textit{deadline} desta atividade o utilizador tem de confirmar a sua participação.
+
+\subsection{Divulgação e calendarização das necessidades}
+
+Com o objetivo de divulgar e calendarizar as necessidades internas da empresa, a barra de navegação da aplicação terá um botão que, quando carregado, 
+redireciona o utilizador para um ecrã novo. 
+Este ecrã apresenta um calendário com o qual o utilizador poderá interagir.  
+Neste calendário são apresentados todos os eventos organizados na sua respetiva data ou apenas filtrar os eventos em que o mesmo participará. 
+Após a seleção de um dia no calendário, são apresentados os eventos, dando a possibilidade ao utilizador de ver os detalhes individuais após carregar num deles, 
+num novo ecrã.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{figures/Calendar use case.jpeg}
+    \caption{\textit{Use case} --- Calendário.}\label{fig:uc:calendar}
+\end{figure}
+
+Para ser possível divulgar as necessidades da empresa de forma uniforme por todos os seus colaboradores, a barra de navegação da aplicação apresentará 
+um botão denominado \textit{Announcements} que, quando carregado, abre um ecrã que contém os comunicados sobre a forma de uma lista. 
+Neste novo ecrã, a seleção de um comunicado mostrará os seus detalhes. 
+Este botão apresentará um pequeno ícone sempre que existir um novo comunicado. 
+Estes comunicados foram criados por um utilizador com permissões de administrador, sendo visíveis por todos.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{figures/Announcements use case.jpeg}
+    \caption{\textit{Use case} --- Announcements.}\label{fig:uc:announcements}
+\end{figure}
+
+\section{Plataforma OutSystems}\label{sec:plataformaOutSystems}
+
+A escolha da plataforma OutSystems baseia-se essencialmente no facto da mesma ser low-code,
+apresentando vários benefícios essenciais para um projeto de curto prazo como o apresentado. A rapidez
+com que é possível produzir peças de software, as funcionalidades user-friendly como drag and drop e 
+interfaces de utilizador pré-feitas e a possibilidade de produzir aplicações automaticamente através de
+um simples click são elementos essenciais que levaram a que esta plataforma fosse escolhida.
