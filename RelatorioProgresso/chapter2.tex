@@ -22,7 +22,7 @@ Relativamente ao ecrã de \textit{Login} ilustrado na, este suporta:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.8]{figures/Login Use Case.jpeg}
+    \includegraphics[scale=0.6]{figures/Login Use Case.jpeg}
     \caption{\textit{Use Case} --- \textit{Login}.}\label{fig:uc:login}
 \end{figure}
 
@@ -39,7 +39,7 @@ A \textit{dashboard} apresenta também as últimas necessidades publicadas na pl
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.8]{figures/General Actions.jpeg}
+    \includegraphics[scale=0.6]{figures/General Actions.jpeg}
     \caption{\textit{Use Case} --- Ações gerais.}\label{fig:uc:generalactions}
 \end{figure}
 
@@ -49,23 +49,23 @@ A funcionalidade de registo de necessidades internas da empresa estão organizad
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.8]{figures/Necessities.jpeg}
+    \includegraphics[scale=0.6]{figures/Necessities.jpeg}
     \caption{\textit{Use Case} --- Necessidades.}\label{fig:uc:necessities}
 \end{figure}
 
 Para isso, é fundamental que exista um ecrã que apresente todas as necessidades da empresa sobre a forma de uma lista. 
 Um utilizador, caso queira registar uma necessidade, irá escolher a categoria que melhor se adequa à mesma. 
 Caso não exista, este, se tiver permissões de admin, poderá criar uma categoria nova no \textit{back-office} da aplicação. 
-Neste ecrã será possível filtrar as necessidades pela sua categoria e também pelo seu grau de urgência.
+Neste ecrã será possível filtrar as necessidades pela sua categoria, pelo seu grau de urgência e também pela sua localização ser no interior ou exterior das instalações da empresa.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.8]{figures/Categories use case.jpeg}
+    \includegraphics[scale=0.6]{figures/Categories use case.jpeg}
     \caption{\textit{Use Case} --- Categorias.}\label{fig:uc:categories}
 \end{figure}
 
-Posto isto, definimos duas categorias caracterizadas pelas necessidades internas serem realizadas nas instalações da empresa (\textit{Inside The Company}), 
-ou no exterior (\textit{Outside The Company}). 
+Posto isto, definimos duas categorias caracterizadas pelas necessidades internas serem realizadas nas instalações da empresa (\textit{Inside}), 
+ou no exterior (\textit{Outside}). 
 Definimos também um segundo conjunto de categorias que permitem um melhor agrupamento das necessidades, como por exemplo \textit{Brown Bags}, 
 \textit{Qualification Offers}, \textit{Software Components Development} ou \textit{Planning of events}. 
 Foi ainda definido um terceiro grupo de categorias que poderá tomar os valores \textit{High}, \textit{Medium} ou \textit{Low}, 
@@ -85,13 +85,13 @@ Uma necessidade que decorra fora das instalações da empresa, no ato da sua cri
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.8]{figures/Necessity.jpeg}
+    \includegraphics[scale=0.6]{figures/Necessity.jpeg}
     \caption{\textit{Use Case} --- Necessidade.}\label{fig:uc:necessity}
 \end{figure}
 
 De modo a organizar eventos ou feiras de emprego, o utilizador seleciona a categoria \textit{Planning of events}.
 
-Com o objetivo de realizar apresentações informais de partilha de conhecimento o utilizador seleciona a categoria “Brown Bags. 
+Com o objetivo de realizar apresentações informais de partilha de conhecimento o utilizador seleciona a categoria \textit{Brown Bags}. 
 Todos os utilizadores devidamente autenticados poderão candidatar-se para assistir a uma dada apresentação ou para a orientar. 
 No contexto desta necessidade interna é definida uma linha temporal que consiste numa primeira fase de candidaturas para escolha do orientador 
 ou orientadores que irão conduzir a apresentação, seguida de uma segunda fase de candidaturas para utilizadores que tenham decidido assistir à apresentação. 
@@ -101,28 +101,28 @@ Numa segunda fase após a escolha do(s) mesmo(s), o autor e os orientadores ter�
 candidataram a assistir ao brown bag, recebendo periodicamente uma notificação com o número de participantes. 
 Nesta atividade interna são aceites todos os candidatos que pretendam assistir.
 
-A categoria “Make a Post” tem como objetivo a criação de um post numa rede social ou blog. 
+A categoria \textit{Make a Post} tem como objetivo a criação de um post numa rede social ou blog. 
 O utilizador ao filtrar esta categoria ser-lhe-á apresentado a lista dos posts. 
 O utilizador ao carregar num post navegará para um novo ecrã que apresentará os detalhes do mesmo. 
 Os detalhes apresentados para um post já publicado incluem uma breve descrição, um link para o post e a pessoa que o realizou. 
 Os detalhes para um post não publicado incluem a possibilidade de o utilizador se candidatar para o realizar, assim como uma breve descrição.
 
-Com o objetivo de possibilitar ofertas de formação dentro da empresa, foi definida a categoria “Qualification Offers”. 
-Esta categoria apresenta uma dinâmica semelhante à categoria “Informal Presentations”, visto que ambas procuram a partilha de 
+Com o objetivo de possibilitar ofertas de formação dentro da empresa, foi definida a categoria \textit{Qualification Offers}. 
+Esta categoria apresenta uma dinâmica semelhante à categoria \textit{Informal Presentations}, visto que ambas procuram a partilha de 
 conhecimento por parte de um ou mais oradores, definidos numa primeira instância, seguida de uma segunda fase em que os utilizadores 
 poderão manifestar a sua intenção em participar. 
 O principal fator que distingue estas duas categorias é a duração da atividade: 
 uma oferta de formação decorrerá ao longo de várias sessões satisfazendo um número total de horas apresentado na descrição da necessidade, 
 ao contrário de uma apresentação informal que é um acontecimento único de duração na ordem dos minutos. 
-Posto isto, a dinâmica apresentada nesta categoria quanto ao ecrã de detalhes e metodologia será semelhante à da categoria “Brown Bags”.
+Posto isto, a dinâmica apresentada nesta categoria quanto ao ecrã de detalhes e metodologia será semelhante à da categoria \textit{Brown Bags}.
 
-A categoria “Software Components Development” tem como objetivo propor projetos e procurar participantes para os mesmos, no âmbito de desenvolvimento de software. 
+A categoria \textit{Software Components Development} tem como objetivo propor projetos e procurar participantes para os mesmos, no âmbito de desenvolvimento de software. 
 Ao ser selecionada uma proposta será apresentado um novo ecrã com a sua descrição, detalhes e com um botão que permitirá ao utilizador 
 candidatar-se para integrar o projeto.
 
 Com o objetivo de proporcionar oportunidades de progressão na carreira de forma espontânea, por exemplo, 
 haver uma vaga para uma posição de tech lead num novo projeto, e os seniors interessados poderem candidatar-se a esta posição. 
-O utilizador após selecionar a categoria “Opportunities for Career Progression” serão apresentadas todas as necessidades correspondentes, sob a forma de uma lista.
+O utilizador após selecionar a categoria \textit{Opportunities for Career Progression} serão apresentadas todas as necessidades correspondentes, sob a forma de uma lista.
 
 A categoria \textit{Off-work Activities} permite a criação de necessidades com o intuito de realizar atividades lúdicas.
 Um autor desta atividade tem de endereçar os meios de transporte bem como se existe almoço e/ou jantar e as ementas para a respetiva refeição. 
@@ -140,7 +140,7 @@ num novo ecrã.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.8]{figures/Calendar use case.jpeg}
+    \includegraphics[scale=0.6]{figures/Calendar use case.jpeg}
     \caption{\textit{Use case} --- Calendário.}\label{fig:uc:calendar}
 \end{figure}
 
@@ -152,7 +152,7 @@ Estes comunicados foram criados por um utilizador com permissões de administrad
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.8]{figures/Announcements use case.jpeg}
+    \includegraphics[scale=0.6]{figures/Announcements use case.jpeg}
     \caption{\textit{Use case} --- Announcements.}\label{fig:uc:announcements}
 \end{figure}
 
