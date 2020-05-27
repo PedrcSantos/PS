@@ -88,39 +88,53 @@ Um utilizador pode ser um participante, um autor ou um orientador da necessidade
 Este poderá ainda ter o cargo de administrador, cujos privilégios incluem editar as categorias representadas pela 
 entidade \textit{Category}.
 
-%\section{Implementação}\label{sec:implementação}
+\section{Implementação}\label{sec:implementacao}
 
-%\subsection{Visualização de necessidades}\label{sec:necessities}
+\subsection{Autenticação}\label{subsec:implementacao:login}
 
-%O utilizador ao carregar no botão \textit{Necessities} presente na barra da aplicação, será redirecionado para o ecrã responsável pela apresentação das necessidades. 
-%O intuito do mesmo consiste na apresentação das necessidades criadas pela comunidade empresarial, sendo possível aplicar filtros e/ou pesquisar pelo título de uma necessidade de modo a que sejam apresentadas apenas as necessidades alvo.
-%As necessidades são apresentadas num \textit{widget} tabela, cujas colunas apresentam informação relevante como título, categoria, prioridade, localização e o número de participantes até ao momento. Sempre que o utilizador pretender criar uma nova necessidade, apenas tem que carregar no botão \textit{Create Necessity} e será redirecionado para um novo ecrã, onde poderá completar a criação.
-%A seleção do título de uma necessidade promove a navegação para o ecrã dos detalhes da mesma. Se se verificar que o utilizador é o autor de uma das necessidades poderá editá-la carregando no ícone que aparece na ultima coluna, da linha em questão, da tabela.
-%A barra de pesquisa permite que o utilizador procure uma necessidade pelo seu título.
-%Os filtros aplicáveis são apresentados em três \textit{widgets} distintos. Dois \textit{dropdowns}, um para permitir a escolha de qual a prioridade e outro para distinguir entre necessidades no exterior e no interior das instalações da empresa.
-%É ainda apresentado um \textit{widget} tabela, de uma só coluna, que permite a seleção das categorias a que as necessidades pertencem, selecionando uma \textit{checkbox}.  
-%Sempre que exista uma mudança na seleção que algum dos \textit{widgets} de filtragem de necessidades ou uma introdução de texto na barra de pesquisa, a tabela é atualizada para apresentar apenas aquelas que verifiquem as características alvo. 
+Para realizar a autenticação de um utilizador, este introduz as suas credenciais nos respetivos \textit{input fields} e clica no botão \textit{Login}.
+Se as credenciais introduzidas não corresponderem às de nenhum utilizador na base de dados, será apresentada uma mensagem de erro.
+Um utilizador só terá acesso a outros ecrãs se tiver autenticado, caso contrário será redirecionado para este ecrã.
 
-%\subsection{Visualização de necessidades num calendário}\label{sec:calendarNecessitiesView}
-%O utilizador ao carregar no botão \textit{Calendar} presente na barra da aplicação, será redirecionado para o ecrã responsável por mostrar num calendário, todas as necessidades existentes, organizadas por datas. 
-%O objetivo deste ecrã é apresentar de uma forma mais organizada e estruturada, todas as necessidades criadas pela empresa, sendo possível filtrar por entre elas. 
-%Para preencher o calendário, para cada necessidade, é criado um objeto \textit{Event} com a sua informação. 
-%Cada evento estará representado no calendário com uma cor diferente de forma a fazer uma distinção entre, necessidades criadas pelo utilizador autenticado, necessidades associadas de alguma forma com o utilizador autenticado, nomeadamente uma inscrição, e necessidades criadas por outros utlizadores.
-%Se o utilizador carregar num evento, este é redirecionado para o seu ecrã de detalhe. 
-%É possível filtrar eventos pela sua categoria, através de um popover menu contém todas as categorias existentes. 
-%Caso seja selecionada uma categoria, são removidos todos os eventos presentes no calendário, e de seguida, renderizado com os novos eventos filtrados.
+\subsection{Dashboard}\label{subsec:implementacao:dashboard}
+%LEMBRAR PARA METER AS NECESSIDADES ATIVAS NA PARTE DAS PRIORIDADES
+Este é o ecrã apresentado a um utilizador autenticado assim que abre a aplicação.
+O mesmo apresenta quatro \textit{widgets} que apresentam informação sobre o número de utilizadores que estão \textit{logged in} e o número de necessidades abertas com as suas respetivas prioridades (\textit{high, medium, low}).
+Este ecrã apresenta também um gráfico com informação sobre as categorias existentes e a distribuição do número de necessidades criadas em cada uma das mesmas.
+A seleção de uma categoria do gráfico promove a navegação para o ecrã das necessidades,  apresentando a lista das mesmas que pertencem à categoria selecionada.
+Para cada uma das prioridades que as necessidades podem ter, é apresentado um \textit{ranking} dos utilizadores que mais criaram necessidades, com a respetiva prioridade.
 
-%\subsection{Criação e edição de necessidades}\label{sec:necessityCreation}
+\subsection{Visualização de necessidades}\label{subsec:implementacao:necessities}
+%WHEN CSS IS DONE PUT A NICE PICTURE HERE :D
+O utilizador ao carregar no botão \textit{Necessities} presente na barra da aplicação, será redirecionado para o ecrã responsável pela apresentação das necessidades. 
+O intuito do mesmo consiste na apresentação das necessidades criadas pela comunidade empresarial, sendo possível aplicar filtros e/ou pesquisar pelo título de uma necessidade de modo a que sejam apresentadas apenas as necessidades alvo.
+As necessidades são apresentadas num \textit{widget} tabela, cujas colunas apresentam informação relevante como título, categoria, prioridade, localização e o número de participantes até ao momento. Sempre que o utilizador pretender criar uma nova necessidade, apenas tem que carregar no botão \textit{Create Necessity} e será redirecionado para um novo ecrã, onde poderá completar a criação.
+A seleção do título de uma necessidade promove a navegação para o ecrã dos detalhes da mesma. Se se verificar que o utilizador é o autor de uma das necessidades poderá editá-la carregando no ícone que aparece na ultima coluna, da linha em questão, da tabela.
+A barra de pesquisa permite que o utilizador procure uma necessidade pelo seu título.
+Os filtros aplicáveis são apresentados em três \textit{widgets} distintos. Dois \textit{dropdowns}, um para permitir a escolha de qual a prioridade e outro para distinguir entre necessidades no exterior e no interior das instalações da empresa.
+É ainda apresentado um \textit{widget} tabela, de uma só coluna, que permite a seleção das categorias a que as necessidades pertencem, selecionando uma \textit{checkbox}.  
+Sempre que exista uma mudança na seleção que algum dos \textit{widgets} de filtragem de necessidades ou uma introdução de texto na barra de pesquisa, a tabela é atualizada para apresentar apenas aquelas que verifiquem as características alvo. 
 
-%O utilizador irá ser redirecionado para este ecrã sempre que tenha a intenção de criar ou alterar uma necessidade.
-%A funcionalidade deste ecrã é criar necessidades ou alterar necessidades existentes.
-%Quando um utilizador clica no botão \textit{Create Necessity}, virá para este ecrã com o intuito de criar uma necessidade.
-%Neste caso, o ecrã apresentará os vários campos necessários para a criação desta.
-%Se o utilizador desejar editar uma necessidade, primeiramente, só o poderá fazer se for o autor desta.
-%Neste caso, o ecrã apresentará os campos já preenchidos com os dados atuais da necessidade e a possibilidade de os alterar livremente.
+\subsection{Visualização de necessidades num calendário}\label{subsec:implementacao:calendarNecessitiesView}
+%WHEN CSS IS DONE PUT A NICE PICTURE HERE :D
+O utilizador ao carregar no botão \textit{Calendar} presente na barra da aplicação, será redirecionado para o ecrã responsável por mostrar, num calendário, todas as necessidades existentes organizadas por datas. 
+O objetivo deste ecrã é apresentar de uma forma mais organizada e estruturada todas as necessidades criadas pela empresa, sendo possível filtrá-las. 
+Para preencher o calendário, para cada necessidade, é criado um objeto \textit{Event} com a sua informação. 
+Cada evento estará representado no calendário com uma cor diferente de forma a distinguir entre necessidades criadas pelo utilizador, necessidades associadas, nomeadamente uma inscrição, e necessidades criadas por outros utlizadores.
+Se o utilizador carregar num evento, este é redirecionado para o seu ecrã de detalhe. 
+É possível filtrar eventos pela sua categoria, através de um popover menu que contém todas as categorias existentes. 
+Caso seja selecionada uma categoria, são removidos todos os eventos presentes no calendário, e de seguida, renderizado com os novos eventos filtrados.
 
-%Os botões presentes neste ecrã são apenas dois:
-%\begin{enumerate}
-%    \item \textit{Cancel} --- aprensenta um \textit{pop-up} a pedir a confirmação do utilizador, após confirmação a criação ou edição será cancelada e o utilizador redirecionado para o ecrã onde estava anteriormente.
-%    \item \textit{Save} --- guarda as alterações a efetuar na necessidade e cria uma ligação ao servidor para modificar a base de dados com uma nova necessidade ou alterando uma necessidade pré-existente.
-%\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Criação e edição de necessidades}\label{subsec:implementacao:necessityCreation}
+%WHEN CSS IS DONE PUT A NICE PICTURE HERE :D
+O utilizador irá ser redirecionado para este ecrã sempre que tenha a intenção de criar ou alterar uma necessidade.
+O ecrã apresenta os vários campos necessários para a criação ou edição da mesma.
+Se o utilizador desejar editar uma necessidade, só o poderá fazer se for o autor desta.
+Neste caso, o ecrã apresentará os campos já preenchidos com os dados atuais da necessidade e a possibilidade de os alterar livremente.
+
+Os botões presentes neste ecrã são apenas dois:
+\begin{enumerate}
+    \item \textit{Cancel} --- apresenta um \textit{pop-up} a pedir a confirmação do utilizador, após confirmação a criação ou edição será cancelada e o utilizador redirecionado para o ecrã onde estava anteriormente.
+    \item \textit{Save} --- guarda as alterações a efetuar na necessidade e cria uma ligação ao servidor para modificar a base de dados com uma nova necessidade ou alterando uma necessidade pré-existente.
+\end{enumerate}
