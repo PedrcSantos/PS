@@ -1,7 +1,7 @@
 \chapter{Formulação do Problema}\label{chapter:formulacaoDoProblema}
 
 \section{Estado da Arte}\label{sec:estadoDaArte}
-As plataformas de colaboração existentes no mercado atual tais como a \textit{Microsoft SharePoint} ou a \textit{BaseCamp} apresentam um elevado nível de complexidade, incluindo ferramentas como calendários partilhados, partilha de ficheiros, mensagens instantâneas, armazenamento na \textit{cloud}, video-conferência, entre outros. A aplicação desenvolvida neste âmbito não procura igualar todas as funcionalidades das plataformas já existentes, mas sim agilizar a dinâmica de atividades internas que ocorrem diariamente nas empresas. Visa essencialmente facilitar a procura de pessoas para cumprir certas necessidades que existam no âmbito das atividades internas da empresa.
+As plataformas de colaboração existentes no mercado atual tais como a \textit{Microsoft SharePoint} ou a \textit{BaseCamp} apresentam um elevado nível de complexidade, incluindo ferramentas como calendários partilhados, partilha de ficheiros, mensagens instantâneas, armazenamento na \textit{cloud}, video-conferência, entre outros. A aplicação desenvolvida neste âmbito não procura igualar todas as funcionalidades das plataformas já existentes, mas sim agilizar a dinâmica de atividades internas que ocorrem diariamente nas empresas. Visa essencialmente facilitar a procura de pessoas para cumprir certas necessidades que existam no âmbito das atividades internas da empresa, necessidades estas que permitem definir uma tarefa que tem de ser realizada ou um evento que será organizado no contexto da dinâmica interna da empresa. Estas necessidades são auxiliadas por recursos que permitem gerir candidaturas e participantes a estas necessidades, assim como apresentar informações sobre alojamento, refeições, transporte e localização, se for caso disso.
 
 \section{Análise de requisitos}\label{sec:requisitos}
 
@@ -76,7 +76,7 @@ dando-lhe a opção de após carregar na notificação ser redirecionado para o 
 Ao criar uma necessidade o autor tem a possibilidade de escolher se todas as candidaturas à necessidade em causa são aceites automaticamente ou se o próprio escolhe os candidatos com base na descrição dada pelos mesmos.  
 O candidato irá receber uma notificação nos casos em que a necessidade for fechada/cancelada, e quando a sua candidatura for aceite/recusada. 
 Terá também a possibilidade de ver quem já se candidatou á necessidade criada pelo próprio no ecrã de detalhe na parte dos participantes, estando candidatos a colaboradores separados de candidatos a participantes. 
-
+O ecrã que permite mostrar as notificações associadas a cada utilizador é acedido ao carregar no ícone em forma de sino presente na barra da aplicação. Este ícone tem um pequeno contador associado que indica o número de notificações pendentes que cada utilizador tem e, quando pressionado, é apresentado o ecrã das notificações onde as mesmas são apresentadas na forma de uma lista. 
 
 \begin{figure}[H]
     \centering
@@ -130,7 +130,7 @@ candidataram à necessidade no seu ecrã de detalhe e todos os utilizadores aute
 
 Com o objetivo de divulgar e calendarizar as necessidades internas da empresa, a barra de navegação da aplicação terá um botão que, quando carregado, 
 redireciona o utilizador para um ecrã que apresenta um calendário com o qual ele poderá interagir. 
-Neste calendário são apresentados todos os eventos organizados na sua respetiva data ou apenas filtrar os eventos em que o mesmo participará. 
+Neste calendário são apresentados todos os eventos organizados, na sua respetiva data, e existe a possibilidade de filtrar os eventos em que o mesmo participará. 
 Após a seleção de um dia no calendário, são apresentados os eventos, dando a possibilidade ao utilizador de ver os detalhes individuais após carregar num deles, 
 num novo ecrã.
 
@@ -142,9 +142,8 @@ num novo ecrã.
 
 Para ser possível divulgar as necessidades da empresa de forma uniforme por todos os seus colaboradores, a barra de navegação da aplicação apresentará 
 um botão denominado \textit{Announcements} que, quando carregado, abre um ecrã que contém os comunicados sobre a forma de uma lista. 
-Neste novo ecrã, a seleção de um comunicado mostrará os seus detalhes. 
-Este botão apresentará um pequeno ícone sempre que existir um novo comunicado. 
-Estes comunicados foram criados por um utilizador com permissões de administrador, sendo visíveis por todos.
+Sempre que for emitido um novo comunicado todos os utililizadores recebem uma notificação com o título do mesmo e, ao carregar nessa notificação, são redirecionados para os detalhes do comunicado. 
+Estes comunicados foram criados por um utilizador com permissões de administrador, sendo visíveis por todos os que estejam autenticados.
 
 \begin{figure}[H]
     \centering
@@ -158,4 +157,4 @@ A escolha da plataforma OutSystems baseia-se essencialmente no facto da mesma se
 apresentando vários benefícios essenciais para um projeto de curto prazo como o apresentado. A rapidez
 com que é possível produzir peças de software, as funcionalidades user-friendly como drag and drop e 
 interfaces de utilizador pré-feitas e a possibilidade de produzir aplicações automaticamente através de
-um simples click são elementos essenciais que levaram a que esta plataforma fosse escolhida.
+um simples click são elementos essenciais que levaram a que esta plataforma fosse escolhida. Cada endpoint da aplicação está associado a um ecrã com o qual o utilizador interage havendo uma navegabilidade entre ecrãs que permite que o utilizador visite os diferentes endpoints da aplicação. A criação e utilização de \textit{blocks} é uma das funcionalidades altamente vantajosas que a plataforma \textit{OutSystems} apresenta visto que permite a reutilização deste componente ao longo da \texit{User Interface}. A construção da aplicação torna-se bastante rentável, em termos de tempo e facilidade do desenvolvimento, através da conjugação de conceitos como \textit{Widgets}, \texit{Screens} e \texit{Blocks} no domínio da  \texit{User Interface} e de conceitos como \texit{Server Actions} (acções executadas do lado do servidor), \textit{Client Actions} ( acções executadas do lado do cliente) e \texit{Aggregates} (acção com o propósito de aceder à base de dados para retornar informações persistentes na mesma). 
