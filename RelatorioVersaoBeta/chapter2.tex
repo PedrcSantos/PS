@@ -1,26 +1,31 @@
 \chapter{Formulação do Problema}\label{chapter:formulacaoDoProblema}
 
+O desenvolvimento desta plataforma colaborativa pretende atingir certos requisitos, de forma a poder enquadrá-la no mercado 
+atual. 
+
+
 \section{Estado da Arte}\label{sec:estadoDaArte}
 As plataformas de colaboração existentes no mercado atual tais como a \textit{Microsoft SharePoint} ou a \textit{BaseCamp} apresentam um elevado nível de complexidade, 
 incluindo ferramentas como calendários partilhados, partilha de ficheiros, mensagens instantâneas, armazenamento na \textit{cloud}, video-conferência, entre outros. 
 A aplicação desenvolvida neste âmbito não procura igualar todas as funcionalidades das plataformas já existentes, 
-mas sim agilizar a dinâmica de atividades internas que ocorrem diariamente nas empresas. 
-Visa essencialmente facilitar a procura de pessoas para cumprir certas necessidades que existam no âmbito das atividades internas da empresa, 
+mas sim, agilizar a dinâmica de atividades internas que ocorrem diariamente nas empresas. 
+Visa, essencialmente, facilitar a procura de pessoas para cumprir certas necessidades que existam no âmbito das atividades internas da empresa, 
 necessidades estas que permitem definir uma tarefa que tem de ser realizada ou um evento que será organizado no contexto da dinâmica interna da empresa. 
 Estas necessidades são auxiliadas por recursos que permitem gerir candidaturas e participantes das mesmas, 
 assim como apresentar informações sobre alojamento, refeições, transporte e localização, se for caso disso.
 
-\section{Análise de requisitos}\label{sec:requisitos}
+\section{Análise de Requisitos}\label{sec:requisitos}
+
 
 \subsection{Registo e Autenticação}\label{subsec:login}
 Para desenvolver a funcionalidade de registo e autenticação na plataforma de colaboração é necessário existir uma tabela 
 na base de dados que guarde as credenciais e informação básica de cada utilizador, nomeadamente 
-o email, password, username, primeiro e último nome. 
-Esta tabela, tanto serve para efeitos de registo de um utilizador, como para verificação posterior da sua autenticação. 
-Os utilizadores não necessitam de fazer registo na aplicação, visto que é suposto usaram na plataforma de colaboração proposta, 
-as mesmas credenciais atribuídas pela empresa para e-mail e autenticação nas outras aplicações internas.
+o \textit{email}, \textit{password}, \textit{username}, primeiro e último nome. 
+Esta tabela tanto serve para efeitos de registo de um utilizador, como para verificação posterior da sua autenticação. 
+Os utilizadores não necessitam de fazer registo na aplicação, visto que nesta plataforma é suposto utilizarem 
+as mesmas credenciais atribuidas pela empresa, para e-mail e autenticação nas outras aplicações internas.
 
-Relativamente ao ecrã de \textit{Login} ilustrado na, este suporta:
+Relativamente ao ecrã de \textit{Login} ilustrado na figura~\ref{fig:uc:login}, este suporta:
 
 \begin{itemize}
     \item Duas caixas de texto onde o utilizador introduz o seu e-mail e password.
@@ -160,16 +165,19 @@ Estes comunicados foram criados por um utilizador com permissões de administrad
 
 \section{Plataforma OutSystems}\label{sec:plataformaOutSystems}
 
-A escolha da plataforma OutSystems baseia-se essencialmente no facto da mesma ser low-code,
+A escolha da plataforma \textit{OutSystems}, para a implementação deste projeto baseia-se essencialmente no facto da mesma ser \textit{low-code},
 apresentando vários benefícios essenciais para um projeto de curto prazo como o apresentado. A rapidez
-com que é possível produzir peças de software, as funcionalidades user-friendly como drag and drop e 
+com que é possível produzir peças de \textit{software}, as funcionalidades \textit{user-friendly} como \textit{drag and drop} e 
 interfaces de utilizador pré-feitas e a possibilidade de produzir aplicações automaticamente através de
-um simples click são elementos essenciais que levaram a que esta plataforma fosse escolhida. 
-Cada endpoint da aplicação está associado a um ecrã com o qual o utilizador interage havendo uma navegabilidade entre ecrãs que permite que o utilizador visite os diferentes endpoints da aplicação.
-A criação e utilização de \textit{blocks} é uma das funcionalidades altamente vantajosas que a plataforma \textit{OutSystems} apresenta visto que permite a reutilização deste componente ao longo da \textit{User Interface}.
+um simples clique, são elementos essenciais que levaram à escolha desta plataforma. 
+Cada \textit{endpoint} da aplicação está associado a um ecrã com o qual o utilizador interage, havendo uma navegabilidade entre ecrãs que permitindo, assim,
+ que o utilizador visite os diferentes \textit{endpoints} da aplicação.
+A criação e utilização de \textit{blocks} é uma das funcionalidades altamente vantajosas que a plataforma \textit{OutSystems} apresenta, 
+visto que permite a reutilização deste componente ao longo da \textit{User Interface --- UI}.
 A construção da aplicação torna-se bastante rentável, em termos de tempo e facilidade do desenvolvimento, 
-através da conjugação de conceitos como \textit{Widgets}, \textit{Screens} e \textit{Blocks} no domínio da  \textit{User Interface} 
+através da conjugação de conceitos como \textit{Widgets}, \textit{Screens} e \textit{Blocks} no domínio da  \textit{UI} 
 e de conceitos como \textit{Server Actions} (ações executadas do lado do servidor), \textit{Client Actions} (ações executadas do lado do cliente) 
 e \textit{Aggregates} (ação com o propósito de aceder à base de dados para retornar informações persistentes na mesma).
-Também é disponibilizado, pela \textit{OutSystems}, um eSpace por \textit{module} que contém elementos essenciais ao desenvolvimento como os enunciados anteriormente.
-A base de dados está alojada numa cloud, onde são guardadas todas as entidades dos vários módulos.
+Também é disponibilizado pela \textit{OutSystems}, um \textit{eSpace} por \textit{module} que contém elementos essenciais 
+ao desenvolvimento, como os enunciados anteriormente.
+A base de dados está alojada numa \textit{cloud}, onde são guardadas todas as entidades dos vários módulos.

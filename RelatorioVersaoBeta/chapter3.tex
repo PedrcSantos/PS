@@ -1,6 +1,13 @@
 \chapter{Descrição do problema}\label{chapter:description}
 
-\section{Diagrama de blocos}\label{sec:diagram}
+O desenvolvimento de uma plataforma colaborativa apresenta diversos desafios ao nível da sua arquitetura, 
+do modelo de dados a construir e das decisões de implementação ao longo do seu desenvolvimento. 
+Neste capítulo irá ser abordado as decisões tomadas no desenvolvimento do projeto, tendo em conta a plataforma \textit{OutSystems}. 
+Irá ser feita uma descrição mais detalhada da solução adotada, acompanhada por um diagrama de blocos, que permite esquematizar a mesma.
+
+
+\section{Diagrama de blocos da solução}\label{sec:diagram}
+A figura~\ref{fig:diagram} apresenta o diagrama de blocos da solução. 
 
 \begin{figure}[H]
   \centering
@@ -33,7 +40,7 @@ Este componente usa os seguintes serviços:
 
 \newpage
 
-\subsection{4 Layer Canvas}\label{sec:4lc}
+\subsection{Arquitetura 4 Layer Canvas}\label{sec:4lc}
 
 Para desenharmos a arquitetura da nossa solução, seguimos a metodologia da plataforma \textit{OutSystems}, a \textit{4 Layer Canvas}.
 
@@ -64,13 +71,15 @@ os ecrãs e a lógica de cliente.
 
 \section{Modelo de Dados}\label{subsec:ModeloDados}
 
+O conceito predominante no modelo de dados, (figura~\ref{fig:modeloDados}), é o de necessidade, representado pela tabela \textit{Necessity}.
+
 \begin{figure}[H]
   \centering 
   \includegraphics[scale=0.4]{figures/DataModel.png}
   \caption{Modelo de dados}\label{fig:modeloDados}
 \end{figure}
 
-O conceito predominante no modelo de dados, (figura~\ref{fig:modeloDados}), é o de necessidade, representado pela tabela \textit{Necessity}. 
+ 
 Uma necessidade é caracterizada por diversos elementos dos quais destacamos o \textit{Status} que referencia uma tabela estática (\textit{NecessityStatus}) que contém os valores possíveis do estado da necessidade, 
 podendo ter os valores \"Closed\", \"Active\" ou \"Archived\". A \textit{CurrentPhase} que indica a fase de candidaturas atual, 
 podendo ser para orientadores ou participantes, a \textit{ColaboratorDate} que representa a data limite das candidaturas 
