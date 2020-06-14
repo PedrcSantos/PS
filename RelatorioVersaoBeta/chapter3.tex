@@ -107,14 +107,15 @@ Para cada uma das prioridades que as necessidades podem ter, é apresentado um \
 %WHEN CSS IS DONE PUT A NICE PICTURE HERE :D
 O utilizador ao carregar no botão \textit{Necessities} presente na barra da aplicação, será redirecionado para o ecrã responsável pela apresentação das necessidades. 
 O intuito do mesmo consiste na apresentação das necessidades criadas pela comunidade empresarial, sendo possível aplicar filtros e/ou pesquisar pelo título de uma necessidade de modo a que sejam apresentadas apenas as necessidades alvo.
-As necessidades são apresentadas num \textit{widget} tabela, cujas colunas apresentam informação relevante como título, categoria, prioridade, localização e o número de participantes até ao momento. Sempre que o utilizador pretender criar uma nova necessidade, apenas tem que carregar no botão \textit{Create Necessity} e será redirecionado para um novo ecrã, onde poderá completar a criação.
-A seleção do título de uma necessidade promove a navegação para o ecrã dos detalhes da mesma. Se se verificar que o utilizador é o autor de uma das necessidades poderá editá-la carregando no ícone que aparece no ecrã de detalhe da mesma.
+As necessidades são apresentadas num \textit{widget} tabela, cujas colunas apresentam informação relevante como título, categoria, prioridade, estado, data de criação e data em que a necessidade irá decorrer. Sempre que o utilizador pretender criar uma nova necessidade, apenas tem que carregar no botão \textit{Create Necessity} e será redirecionado para um novo ecrã, onde poderá completar a criação.
+A seleção do título de uma necessidade promove a navegação para o ecrã dos detalhes da mesma.
 A barra de pesquisa permite que o utilizador procure uma necessidade pelo seu título.
 Os filtros aplicáveis são apresentados em dois \textit{dropdowns}, um para permitir a escolha de qual a prioridade e outro para seleção da(s) categoria(s).
-Sempre que exista uma mudança na seleção que algum dos \textit{widgets} de filtragem de necessidades ou uma introdução de texto na barra de pesquisa, a tabela é atualizada para apresentar apenas aquelas que verifiquem as características alvo. O ecrã \textit{NecessityCreation} é utilizado para criar, editar, remover ou ver os detalhes de uma necessidade. É também neste ecrã que o utilizador poderá consultar os recursos associados através da navegação até à tab \textit{Resources} e se for o autor da mesma pode adicionar novos recursos. Todos os recursos com exceção do recurso transporte têm um \textit{block} que contém um mapa do \textit{Google Maps} através do qual o utilizador pode colocar um marker para dar a conhecer a localização associada ao recurso. 
-//TODO FALAR GOOOGLE MAPS AQUI
+Sempre que exista uma mudança na seleção de algum dos \textit{widgets} de filtragem de necessidades ou uma introdução de texto na barra de pesquisa, a tabela é atualizada para apresentar apenas aquelas que verifiquem as características alvo. 
+As informações de cada uma das necessidades, das categorias existentes e das prioridades são obtidas comunicando com o servidor através de \textit{Aggregates}. 
+Estes \textit{Aggregates} são \textit{querys} optimizadas à base de dados de modo a retornar informação de forma eficiente e apresentá-la nos \textit{widgets} do ecrã.
 
-Na última tab do \textit{widget Accordion} presente no ecrã \textit{NecessityCreation} encontra-se a secção relacionada com os participantes à necessidade. 
+
 
 \subsection{Visualização de necessidades num calendário}\label{subsec:implementacao:calendarNecessitiesView}
 %WHEN CSS IS DONE PUT A NICE PICTURE HERE :D
@@ -129,13 +130,20 @@ Caso seja selecionada uma categoria, são removidos todos os eventos presentes n
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Criação e edição de necessidades}\label{subsec:implementacao:necessityCreation}
 %WHEN CSS IS DONE PUT A NICE PICTURE HERE :D
-O utilizador irá ser redirecionado para este ecrã sempre que tenha a intenção de criar ou alterar uma necessidade.
-O ecrã apresenta os vários campos necessários para a criação ou edição da mesma.
-Se o utilizador desejar editar uma necessidade, só o poderá fazer se for o autor desta.
-Neste caso, o ecrã apresentará os campos já preenchidos com os dados atuais da necessidade e a possibilidade de os alterar livremente.
 
-Os botões presentes neste ecrã são apenas dois:
-\begin{enumerate}
-    \item \textit{Cancel} --- apresenta um \textit{pop-up} a pedir a confirmação do utilizador, após confirmação a criação ou edição será cancelada e o utilizador redirecionado para o ecrã onde estava anteriormente.
-    \item \textit{Save} --- guarda as alterações a efetuar na necessidade e cria uma ligação ao servidor para modificar a base de dados com uma nova necessidade ou alterando uma necessidade pré-existente.
-\end{enumerate}
+O ecrã \textit{NecessityCreation} é utilizado para criar, editar, remover ou ver os detalhes de uma necessidade.
+No momento da criação de uma necessidade os \textit{widgets} presentes neste ecrã permitem que o utilizador indique o título, a descrição, a categoria a qual associar a necessidade, a sua prioridade, 
+se existe filtragem de participantes ou todas as candidaturas são aceites, uma imagem e um ficheiro para serem associados à necessidade, a data em que a mesma irá decorrer, se é necessário colaborador(es) e a data limite para a(s) sua(s) candidatura(s).
+
+Ao pressionar o botão presente no final do ecrã com a legenda \textit{Save}, tanto num cenário de edição como de criação, 
+são guardadas as informações presentes nos \textit{widgets} e é desencadeada uma \textit{client action} que posteriormente cria uma ligação ao servidor através da chamada a uma \textit{server action} para modificar a base de dados com uma nova necessidade ou alterando uma necessidade pré-existente.
+
+Se o utilizador desejar editar ou remover uma necessidade, só o poderá fazer se for o autor desta e, no caso de a editar, o ecrã apresentará os campos já preenchidos com os dados atuais da necessidade e a possibilidade de os alterar livremente.
+É também neste ecrã que o utilizador poderá consultar os recursos associados através da navegação até à tab \textit{Resources} e se for o autor da necessidade pode adicionar novos recursos. 
+Todos os recursos com exceção do recurso transporte têm um \textit{block} que contém um mapa do \textit{Google Maps} através do qual o utilizador pode colocar um marker para dar a conhecer a localização associada ao recurso. 
+A integração do \textit{Google Maps} na plataforma é realizada através da comunicação com a API do \textit{Google Maps}. Para criar um novo mapa é necessário criar um objeto do tipo \textit{google.maps.Map} que recebe na sua construção o elemento html onde o mapa será inserido. 
+Toda a dinâmica de interação com o mapa é gerida pela API através de eventos que são desencadeados com o toque no mesmo. 
+
+Na última tab do \textit{widget Accordion} presente no ecrã \textit{NecessityCreation} encontra-se a secção relacionada com os participantes à necessidade. 
+Nesta secção um utilizador poderá candidatar-se à posição de colaborador ou participante, de acordo com a fase em que a necessidade se encontra, carregando no \textit{widget link} com o texto \textit{Apply as a Colaborator/Partipant} e deixando uma descrição se a filtragem dos candidatos estiver ativa para aquela necessidade.
+Um utilizador, ao criar uma necessidade, tem a opção de escolher se todas as candidaturas são aceites ou se o próprio irá proceder à sua filtragem selecionando um dos \textit{widgets radio button}.  
