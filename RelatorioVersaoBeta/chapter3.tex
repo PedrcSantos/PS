@@ -71,7 +71,7 @@ os ecrãs e a lógica de cliente.
 \end{figure}
 
 O conceito predominante no modelo de dados, (figura~\ref{fig:modeloDados}), é o de necessidade, representado pela tabela \textit{Necessity}. 
-Uma necessidade é caracterizada por diversos elementos dos quais destacamos o \textit{Status} que referencia uma tabela estática que contém os valores possíveis do estado da necessidade, 
+Uma necessidade é caracterizada por diversos elementos dos quais destacamos o \textit{Status} que referencia uma tabela estática (\textit{NecessityStatus}) que contém os valores possíveis do estado da necessidade, 
 podendo ter os valores \"Closed\", \"Active\" ou \"Archived\". A \textit{CurrentPhase} que indica a fase de candidaturas atual, 
 podendo ser para orientadores ou participantes, a \textit{ColaboratorDate} que representa a data limite das candidaturas 
 à posição de orientador e ainda \textit{AcceptanceSettings} que indica se para a necessidade em causa são aceites todos os participantes ou se existe uma filtragem por parte do autor. 
@@ -79,13 +79,13 @@ As tabelas \textit{NecessityImage} e \textit{NecessityFile} existem para o prop�
 aliviando a quantidade de dados guardada em cada tuplo \textit{Necessity}, 
 seguindo também as boas práticas da plataforma \textit{OutSystems}. 
 A entidade estática \textit{Priorities} contém os valores possíveis das prioridades que cada necessidade pode ter.
-Associado ao conceito de necessidade está o de recurso, que tem como objetivo acrescentar informação à necessidade de uma forma flexível //TODO 
-Com o objetivo de guardar informação de candidaturas a necessidades, é definida a entidade \texttt{\textit{Necessity\char`_Participants}} que 
+Associado ao conceito de necessidade está o de recurso, que tem como objetivo acrescentar informação à necessidade de uma forma flexível. Para suportar este conceito foi definida a entidade estática \textit{ResourcesType} cujos valores representam os tipos de recursos que um utilizador pode, facultativamente, acrescentar à necessidade, consistindo em acomodação, restaurante e menus de refeições, localização do evento ou transporte. A representação de um recurso no modelo de dados traduz-se na entidade \textit{NecessityResource} que guarda informações de cada recurso como o seu tipo (referência à tabela  \textit{ResourcesType}), a sua descrição, o id da necessidade a que o mesmo pertence e, como todos os recursos à exceção do relativo ao transporte têm um mapa do \textit{Google Maps} associado, o último atributo da tabela \textit{NecessityResource} é um id do marcador do mapa associado ao recurso.
+Com o objetivo de guardar informação sobre os participantes de uma necessidade, é definida a entidade \texttt{\textit{Necessity\char`_Participants}} que 
 contempla o identificador da mesma, o identificador do utilizador, a descrição associada à candidatura, 
-se esta candidatura é para posição de orientador ou de participante e a data da candidatura. 
+se esta candidatura é para posição de orientador ou de participante, a data da candidatura, se o utilizador participou na necessidade, qual o estado da candidatura e os recursos associados a este participante. 
 Um utilizador pode ser um participante, um autor ou um orientador da necessidade. 
-Este poderá ainda ter o cargo de administrador, cujos privilégios incluem editar as categorias representadas pela 
-entidade \textit{Category}.
+Os comunicados feitos na plataforma são suportados pela entidade \textit{Announcements}. As notificações apresentadas na plataforma são suportadas pela entidade \textit{Notifications} em que cada notificação está associada a um utilizador através do seu id, o seu conteúdo é guardado no atributo \textit{Info} e a hora da emissão da notificação no atributo \textit{DateTime}. 
+Um utilizador pode ainda ter o cargo de administrador, cujos privilégios incluem editar as categorias representadas pela entidade \textit{Category}.
 
 \section{Implementação}\label{sec:implementacao}
 
@@ -108,11 +108,13 @@ Para cada uma das prioridades que as necessidades podem ter, é apresentado um \
 O utilizador ao carregar no botão \textit{Necessities} presente na barra da aplicação, será redirecionado para o ecrã responsável pela apresentação das necessidades. 
 O intuito do mesmo consiste na apresentação das necessidades criadas pela comunidade empresarial, sendo possível aplicar filtros e/ou pesquisar pelo título de uma necessidade de modo a que sejam apresentadas apenas as necessidades alvo.
 As necessidades são apresentadas num \textit{widget} tabela, cujas colunas apresentam informação relevante como título, categoria, prioridade, localização e o número de participantes até ao momento. Sempre que o utilizador pretender criar uma nova necessidade, apenas tem que carregar no botão \textit{Create Necessity} e será redirecionado para um novo ecrã, onde poderá completar a criação.
-A seleção do título de uma necessidade promove a navegação para o ecrã dos detalhes da mesma. Se se verificar que o utilizador é o autor de uma das necessidades poderá editá-la carregando no ícone que aparece na ultima coluna, da linha em questão, da tabela.
+A seleção do título de uma necessidade promove a navegação para o ecrã dos detalhes da mesma. Se se verificar que o utilizador é o autor de uma das necessidades poderá editá-la carregando no ícone que aparece no ecrã de detalhe da mesma.
 A barra de pesquisa permite que o utilizador procure uma necessidade pelo seu título.
-Os filtros aplicáveis são apresentados em três \textit{widgets} distintos. Dois \textit{dropdowns}, um para permitir a escolha de qual a prioridade e outro para distinguir entre necessidades no exterior e no interior das instalações da empresa.
-É ainda apresentado um \textit{widget} tabela, de uma só coluna, que permite a seleção das categorias a que as necessidades pertencem, selecionando uma \textit{checkbox}.  
-Sempre que exista uma mudança na seleção que algum dos \textit{widgets} de filtragem de necessidades ou uma introdução de texto na barra de pesquisa, a tabela é atualizada para apresentar apenas aquelas que verifiquem as características alvo. 
+Os filtros aplicáveis são apresentados em dois \textit{dropdowns}, um para permitir a escolha de qual a prioridade e outro para seleção da(s) categoria(s).
+Sempre que exista uma mudança na seleção que algum dos \textit{widgets} de filtragem de necessidades ou uma introdução de texto na barra de pesquisa, a tabela é atualizada para apresentar apenas aquelas que verifiquem as características alvo. O ecrã \textit{NecessityCreation} é utilizado para criar, editar, remover ou ver os detalhes de uma necessidade. É também neste ecrã que o utilizador poderá consultar os recursos associados através da navegação até à tab \textit{Resources} e se for o autor da mesma pode adicionar novos recursos. Todos os recursos com exceção do recurso transporte têm um \textit{block} que contém um mapa do \textit{Google Maps} através do qual o utilizador pode colocar um marker para dar a conhecer a localização associada ao recurso. 
+//TODO FALAR GOOOGLE MAPS AQUI
+
+Na última tab do \textit{widget Accordion} presente no ecrã \textit{NecessityCreation} encontra-se a secção relacionada com os participantes à necessidade. 
 
 \subsection{Visualização de necessidades num calendário}\label{subsec:implementacao:calendarNecessitiesView}
 %WHEN CSS IS DONE PUT A NICE PICTURE HERE :D
