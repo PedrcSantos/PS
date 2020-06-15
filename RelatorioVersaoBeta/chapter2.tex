@@ -1,6 +1,6 @@
 \chapter{Formulação do Problema}\label{chapter:formulacaoDoProblema}
 
-O desenvolvimento desta plataforma colaborativa pretende atingir certos requisitos, de forma a poder enquadrá-la no mercado 
+O desenvolvimento da plataforma \textit{Corporate Collaboration} pretende atingir certos requisitos, de forma a poder enquadrá-la no mercado 
 atual. 
 
 
@@ -16,6 +16,13 @@ assim como apresentar informações sobre alojamento, refeições, transporte e 
 
 \section{Análise de Requisitos}\label{sec:requisitos}
 
+As funcionalidades principais da plataforma \textit{Corporate Collaboration} estão representadas na figura~\ref{fig:uc:generalActions}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{figures/General Actions.jpeg}
+    \caption{\textit{Use Case} --- Ações gerais.}\label{fig:uc:generalActions}
+\end{figure}
 
 \subsection{Registo e Autenticação}\label{subsec:login}
 Para desenvolver a funcionalidade de registo e autenticação na plataforma de colaboração é necessário existir uma tabela 
@@ -47,12 +54,6 @@ apresentar a informação de uma forma apelativa. As necessidades a que o utiliz
 O mesmo irá conter também uma secção com estatística relativa ao número de necessidades que existem em cada categoria. 
 A seleção de uma das categorias na estatística redirecionará o utilizador para o ecrã das necessidades, 
 apresentando a lista das mesmas com o filtro correspondente à categoria selecionada. 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.6]{figures/General Actions.jpeg}
-    \caption{\textit{Use Case} --- Ações gerais.}\label{fig:uc:generalactions}
-\end{figure}
 
 \subsection{Registo das necessidades internas da empresa, gestão de candidaturas, notificações e integração com o google maps}\label{subsec:necessitiesCandidatesNotificationsGoogleMaps}
 
@@ -153,7 +154,7 @@ num novo ecrã.
 \end{figure}
 
 Para ser possível divulgar as necessidades da empresa de forma uniforme por todos os seus colaboradores, a barra de navegação da aplicação apresentará 
-um botão denominado \textit{Announcements} que, quando carregado, abre um ecrã que contém os comunicados sobre a forma de uma lista. 
+um botão denominado \textit{Announcements} que, quando carregado, abre um ecrã  (figura~\ref{fig:uc:announcements}) que contém os comunicados sobre a forma de uma lista. 
 Sempre que for emitido um novo comunicado todos os utililizadores recebem uma notificação com o título do mesmo e, ao carregar nessa notificação, são redirecionados para os detalhes do comunicado. 
 Estes comunicados foram criados por um utilizador com permissões de administrador, sendo visíveis por todos os que estejam autenticados.
 
@@ -165,19 +166,19 @@ Estes comunicados foram criados por um utilizador com permissões de administrad
 
 \section{Plataforma OutSystems}\label{sec:plataformaOutSystems}
 
-A escolha da plataforma \textit{OutSystems}, para a implementação deste projeto baseia-se essencialmente no facto da mesma ser \textit{low-code},
+A escolha da plataforma \textit{OutSystems~\cite{outsystems}}, para a implementação deste projeto baseia-se essencialmente no facto da mesma ser \textit{low-code},
 apresentando vários benefícios essenciais para um projeto de curto prazo como o apresentado. A rapidez
 com que é possível produzir peças de \textit{software}, as funcionalidades \textit{user-friendly} como \textit{drag and drop} e 
 interfaces de utilizador pré-feitas e a possibilidade de produzir aplicações automaticamente através de
 um simples clique, são elementos essenciais que levaram à escolha desta plataforma. 
 Cada \textit{endpoint} da aplicação está associado a um ecrã com o qual o utilizador interage, havendo uma navegabilidade entre ecrãs que permitindo, assim,
  que o utilizador visite os diferentes \textit{endpoints} da aplicação.
-A criação e utilização de \textit{blocks} é uma das funcionalidades altamente vantajosas que a plataforma \textit{OutSystems} apresenta, 
+A criação e utilização de \textit{blocks} é uma das funcionalidades altamente vantajosas que a plataforma \textit{OutSystems~\cite{outsystems}} apresenta, 
 visto que permite a reutilização deste componente ao longo da \textit{User Interface --- UI}.
 A construção da aplicação torna-se bastante rentável, em termos de tempo e facilidade do desenvolvimento, 
 através da conjugação de conceitos como \textit{Widgets}, \textit{Screens} e \textit{Blocks} no domínio da  \textit{UI} 
 e de conceitos como \textit{Server Actions} (ações executadas do lado do servidor), \textit{Client Actions} (ações executadas do lado do cliente) 
 e \textit{Aggregates} (ação com o propósito de aceder à base de dados para retornar informações persistentes na mesma).
-Também é disponibilizado pela \textit{OutSystems}, um \textit{eSpace} por \textit{module} que contém elementos essenciais 
+Também é disponibilizado pela \textit{OutSystems~\cite{outsystems}}, um \textit{eSpace} por \textit{module} que contém elementos essenciais 
 ao desenvolvimento, como os enunciados anteriormente.
 A base de dados está alojada numa \textit{cloud}, onde são guardadas todas as entidades dos vários módulos.
