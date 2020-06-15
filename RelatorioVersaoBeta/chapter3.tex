@@ -104,16 +104,23 @@ Para realizar a autenticação de um utilizador, este introduz as suas credencia
 Se as credenciais introduzidas não corresponderem às de nenhum utilizador na base de dados, será apresentada uma mensagem de erro.
 Um utilizador só terá acesso a outros ecrãs se tiver autenticado, caso contrário será redirecionado para este ecrã.
 
-\subsection{Dashboard}\label{subsec:implementacao:dashboard}
-%LEMBRAR PARA METER AS NECESSIDADES ATIVAS NA PARTE DAS PRIORIDADES
-Este é o ecrã apresentado a um utilizador autenticado assim que abre a aplicação.
+\subsection{\textit{Dashboard}}\label{subsec:implementacao:dashboard}
+
+A um utilizador autenticado é apresentado o ecrã da \textit{dashboard} figura~\ref{fig:Dashboard}, quando inicia a aplicação.
 O mesmo apresenta quatro \textit{widgets} que apresentam informação sobre o número de utilizadores que estão \textit{logged in} e o número de necessidades abertas com as suas respetivas prioridades (\textit{high, medium, low}).
 Este ecrã apresenta também um gráfico com informação sobre as categorias existentes e a distribuição do número de necessidades criadas em cada uma das mesmas.
 A seleção de uma categoria do gráfico promove a navegação para o ecrã das necessidades,  apresentando a lista das mesmas que pertencem à categoria selecionada.
 Para cada uma das prioridades que as necessidades podem ter, é apresentado um \textit{ranking} dos utilizadores que mais criaram necessidades, com a respetiva prioridade.
 
+\begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.4]{figures/Dashboard.png}
+  \caption{\textit{Dashboard}}\label{fig:Dashboard}
+\end{figure}
+
+
 \subsection{Visualização de necessidades}\label{subsec:implementacao:necessities}
-%WHEN CSS IS DONE PUT A NICE PICTURE HERE :D
+Este ecrã, demonstrado na figura~\ref{fig:Necessities}
 O utilizador ao carregar no botão \textit{Necessities} presente na barra da aplicação, será redirecionado para o ecrã responsável pela apresentação das necessidades. 
 O intuito do mesmo consiste na apresentação das necessidades criadas pela comunidade empresarial, sendo possível aplicar filtros e/ou pesquisar pelo título de uma necessidade de modo a que sejam apresentadas apenas as necessidades alvo.
 As necessidades são apresentadas num \textit{widget} tabela, cujas colunas apresentam informação relevante como título, categoria, prioridade, estado, data de criação e data em que a necessidade irá decorrer. Sempre que o utilizador pretender criar uma nova necessidade, apenas tem que carregar no botão \textit{Create Necessity} e será redirecionado para um novo ecrã, onde poderá completar a criação.
@@ -124,6 +131,13 @@ Sempre que exista uma mudança na seleção de algum dos \textit{widgets} de fil
 As informações de cada uma das necessidades, das categorias existentes e das prioridades são obtidas comunicando com o servidor através de \textit{Aggregates}. 
 Estes \textit{Aggregates} são \textit{querys} optimizadas à base de dados de modo a retornar informação de forma eficiente e apresentá-la nos \textit{widgets} do ecrã.
 
+\comment{
+\begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.4]{figures/Necessities.png}
+  \caption{Ecrã das necessidades.}\label{fig:Necessities}
+\end{figure}
+}
 
 \subsection{Visualização de necessidades num calendário}\label{subsec:implementacao:calendarNecessitiesView}
 %WHEN CSS IS DONE PUT A NICE PICTURE HERE :D
@@ -142,14 +156,41 @@ O ecrã \textit{NecessityCreation} é utilizado para criar, editar, remover ou v
 No momento da criação de uma necessidade os \textit{widgets} presentes neste ecrã permitem que o utilizador indique o título, a descrição, a categoria a qual associar a necessidade, a sua prioridade, 
 se existe filtragem de participantes ou todas as candidaturas são aceites, uma imagem e um ficheiro para serem associados à necessidade, a data em que a mesma irá decorrer, se é necessário colaborador(es) e a data limite para a(s) sua(s) candidatura(s).
 
+\begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.4]{figures/NecessityCreation1.png}\label{fig:necessityCreation1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.4]{figures/NecessityCreation2.png}
+  \caption{Ecrã \textit{Necessity Creation} onde é possível criar uma necessidade}\label{fig:necessityCreation2}
+\end{figure}
+
+
 Ao pressionar o botão presente no final do ecrã com a legenda \textit{Save}, tanto num cenário de edição como de criação, 
 são guardadas as informações presentes nos \textit{widgets} e é desencadeada uma \textit{client action} que posteriormente cria uma ligação ao servidor através da chamada a uma \textit{server action} para modificar a base de dados com uma nova necessidade ou alterando uma necessidade pré-existente.
 
 Se o utilizador desejar editar ou remover uma necessidade, só o poderá fazer se for o autor desta e, no caso de a editar, o ecrã apresentará os campos já preenchidos com os dados atuais da necessidade e a possibilidade de os alterar livremente.
+
+\begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.4]{figures/NecessityCreationWithResourcesAndParticipants.png}
+  \caption{Ecrã \textit{Necessity Creation} após a criação de uma necessidade}\label{fig:NecessityCreationWithResourcesAndParticipants}
+\end{figure}
+
+
 É também neste ecrã que o utilizador poderá consultar os recursos associados através da navegação até à tab \textit{Resources} e se for o autor da necessidade pode adicionar novos recursos. 
 Todos os recursos com exceção do recurso transporte têm um \textit{block} que contém um mapa do \textit{Google Maps} através do qual o utilizador pode colocar um marker para dar a conhecer a localização associada ao recurso. 
 A integração do \textit{Google Maps} na plataforma é realizada através da comunicação com a API do \textit{Google Maps}. Para criar um novo mapa é necessário criar um objeto do tipo \textit{google.maps.Map} que recebe na sua construção o elemento html onde o mapa será inserido. 
 Toda a dinâmica de interação com o mapa é gerida pela API através de eventos que são desencadeados com o toque no mesmo. 
+
+\begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.4]{figures/Resources1.png}
+  \caption{Ecrã \textit{Necessity Creation} após a criação de uma necessidade}\label{fig:NecessityCreationWithResourcesAndParticipants}
+\end{figure}
+
 
 Na última tab do \textit{widget Accordion} presente no ecrã \textit{NecessityCreation} encontra-se a secção relacionada com os participantes à necessidade. 
 Nesta secção um utilizador poderá candidatar-se à posição de colaborador ou participante, de acordo com a fase em que a necessidade se encontra, carregando no \textit{widget link} com o texto \textit{Apply as a Colaborator/Partipant} e deixando uma descrição se a filtragem dos candidatos estiver ativa para aquela necessidade.
