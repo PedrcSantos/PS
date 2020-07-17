@@ -45,7 +45,13 @@ Relativamente ao ecrã de \textit{Login} ilustrado na figura~\ref{fig:uc:login},
     \caption{\textit{Use Case} --- \textit{Login}.}\label{fig:uc:login}
 \end{figure}
 
-O utilizador com permissões de administrador tem acesso ao \textit{back-office} onde pode criar ou remover categorias.
+\subsection{Manutenção da aplicação e \textit{Backoffice}}\label{subsec:manutencao_e_backoffice}
+
+Com o objetivo de realizar operações de manutenção e operações que requerem privilégio superior ao de um utilizador comum foi implementada a aplicação \textit{BackOffice}. 
+Um utilizador com permissões de administrador ou de \textit{owner} tem acesso ao \textit{BackOffice} onde pode criar ou remover categorias, analisar as necessidades criadas pela comunidade empresarial e escolher se as mesmas são aceites ou eliminadas, 
+ver todos os utilizadores da plataforma colaborativa e alterar as suas permissões (\textit{roles}) e analisar mensagens produzidas por um dado utilizador comum com pedidos/sugestões para os utilizadores com permissões superiores (\textit{admin & owner}).  
+
+
 
 \subsection{\textit{Home Page --- Dashboard}}\label{subsec:dashboard}
 
@@ -108,37 +114,6 @@ com base na descrição apresentada pelos mesmos.
 Numa segunda fase após a escolha do(s) mesmo(s), o autor pode ver os utilizadores que se 
 candidataram à necessidade no seu ecrã de detalhe e todos os utilizadores autenticados podem ver quem foi aceite/vai ao evento.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\comment{
-    A categoria \textit{Make a Post} tem como objetivo a criação de um post numa rede social ou blog. 
-    O utilizador ao filtrar esta categoria ser-lhe-á apresentado a lista dos posts. 
-    O utilizador ao carregar num post navegará para um novo ecrã que apresentará os detalhes do mesmo. 
-    Os detalhes apresentados para um post já publicado incluem uma breve descrição, um link para o post e a pessoa que o realizou. 
-    Os detalhes para um post não publicado incluem a possibilidade de o utilizador se candidatar para o realizar, assim como uma breve descrição.
-
-    Com o objetivo de possibilitar ofertas de formação dentro da empresa, foi definida a categoria \textit{Qualification Offers}. 
-    Esta categoria apresenta uma dinâmica semelhante à categoria \textit{Informal Presentations}, visto que ambas procuram a partilha de 
-    conhecimento por parte de um ou mais oradores, definidos numa primeira instância, seguida de uma segunda fase em que os utilizadores 
-    poderão manifestar a sua intenção em participar. 
-    O principal fator que distingue estas duas categorias é a duração da atividade: 
-    uma oferta de formação decorrerá ao longo de várias sessões satisfazendo um número total de horas apresentado na descrição da necessidade, 
-    ao contrário de uma apresentação informal que é um acontecimento único de duração na ordem dos minutos. 
-    Posto isto, a dinâmica apresentada nesta categoria quanto ao ecrã de detalhes e metodologia será semelhante à da categoria \textit{Brown Bags}.
-
-    A categoria \textit{Software Components Development} tem como objetivo propor projetos e procurar participantes para os mesmos, no âmbito de desenvolvimento de software. 
-    Ao ser selecionada uma proposta será apresentado um novo ecrã com a sua descrição, detalhes e com um botão que permitirá ao utilizador 
-    candidatar-se para integrar o projeto.
-
-    Com o objetivo de proporcionar oportunidades de progressão na carreira de forma espontânea, por exemplo, 
-    haver uma vaga para uma posição de tech lead num novo projeto, e os seniors interessados poderem candidatar-se a esta posição. 
-    O utilizador após selecionar a categoria \textit{Opportunities for Career Progression} serão apresentadas todas as necessidades correspondentes, sob a forma de uma lista.
-
-    A categoria \textit{Off-work Activities} permite a criação de necessidades com o intuito de realizar atividades lúdicas.
-    Um autor desta atividade tem de endereçar os meios de transporte bem como se existe almoço e/ou jantar e as ementas para a respetiva refeição. 
-    A funcionalidade de candidaturas nesta categoria funciona de forma a que cada utilizador manifeste a sua vontade em participar no evento.
-    Antes do \textit{deadline} desta atividade o utilizador tem de confirmar a sua participação.
-}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Divulgação e calendarização das necessidades}
 
 Com o objetivo de divulgar e calendarizar as necessidades internas da empresa, a barra de navegação da aplicação terá um botão que, quando carregado, 
@@ -182,3 +157,20 @@ e \textit{Aggregates} (ação com o propósito de aceder à base de dados para r
 Também é disponibilizado pela \textit{OutSystems~\cite{outsystems}}, um \textit{eSpace} por \textit{module} que contém elementos essenciais 
 ao desenvolvimento, como os enunciados anteriormente.
 A base de dados está alojada numa \textit{cloud}, onde são guardadas todas as entidades dos vários módulos.
+
+
+%UsersManagers
+%Foi desenvolvido um ecrã chamado ManageUsers que permite aos utilizadores com as permissões de admin e owner fazer uma gestão de todos os utilizadores da aplicação.
+%Para isso, foram criadas duas tabelas. Uma delas mostra todos os utilizadores com apenas a role de registado e a possibilidade de para cada um, ser promovido a 
+%administrador, e a outra mostra todos os utilizadores com a role de administrador ou owner e a possibilidade de para cada um, ser despromovido de administrador com exceção do onwer. 
+%Neste caso, apenas os utilizadores com a role de owner podem despromover administradores a utilizadores registados.
+
+
+No contexto do uma necessidade, existem os seguintes roles:
+
+Autor - Utilizador que criou a necessidade. Tem as permissões de poder editar e eliminar a necessidade.
+
+Participante - Utilizador que se candidata durante a fase de participantes e se aceite pode, opcionalmente, participar também nos recursos associados à mesma.
+
+Colaborador - Utilizador que se candidatou a uma necessidade durante a fase de colaborador. Se aceite por parte do autor, 
+adquire as mesmas permissões de um participante comum e adquire também as permissões de poder editar a necessidade com exceção da data do evento e de aceitar/rejeitar participantes desta necessidade. 
