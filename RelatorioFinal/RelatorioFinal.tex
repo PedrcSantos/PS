@@ -1,0 +1,126 @@
+\documentclass[a4paper,openright,11pt]{report}
+
+%
+% Times New Roman font.
+%
+\usefont{T1}{ptm}{m}{n}
+\selectfont
+
+
+% Packages a utilizar e respetivos parâmetros.
+\usepackage{indentfirst}
+\usepackage{inputenc}
+\usepackage{enumitem}
+\usepackage[portuguese]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{url}
+
+\makeatletter
+\let\NAT@parse\undefined
+\makeatother
+\usepackage{hyperref}
+
+\addto{\captionsenglish}{\renewcommand{\bibname}{References}}
+% Definições das dimensões das páginas
+\setlength{\textheight}{24.00cm}
+\setlength{\textwidth}{15.50cm}
+\setlength{\topmargin}{0.35cm}
+\setlength{\headheight}{0cm}
+\setlength{\headsep}{0cm}
+\setlength{\oddsidemargin}{0.25cm}
+\setlength{\evensidemargin}{0.25cm}
+
+\newcommand{\comment}[1]{}
+%
+% Times New Roman font.
+%
+\usefont{T1}{ptm}{m}{n}
+\selectfont
+
+%
+%title
+%
+\title{%
+  \vspace{-55mm}
+  \begin{minipage}[l]{150mm}
+    \resizebox{50mm}{!}{\includegraphics{./figures/logo_isel.png}}
+  \end{minipage}\\
+  \vspace{20mm}
+  \bfseries{Corporate Collaboration \par Relatório Beta}
+}
+
+%
+%authors
+%
+\author{%
+  \begin{tabular}{lll}
+      & David Fidalgo \\
+      & goncalo9marco@hotmail.com\\
+      & 968 225 962 \\
+      & 45365 \\
+  \\
+    & Pedro Santos \\
+    & santos.pedroc@gmail.com \\
+    & 962 942 930 \\
+    & 45366 \\
+  \\
+    & Valdemar Antunes \\
+    & ValdemarPCA@hotmail.com \\
+    & 966 439 259 \\
+    & 44865 
+  \end{tabular}
+} 
+
+%
+% date
+%
+\date{%
+\vspace{30mm}
+\begin{center}
+  \begin{tabular}{ccc}
+    & {Orientadores:} \\
+    & Paula Graça, ISEL, paula.graca@isel.pt \\
+    & Diogo Pacheco, Do iT Lean, diogo.pacheco@doitlean.com\\
+  \end{tabular}\\
+\end{center}
+\vspace{20mm}
+Relatório beta realizado no âmbito de Projecto e Seminário,\\
+do curso de licenciatura em Engenharia Informática e de Computadores\\
+Semestre de Verão 2019/2020
+\vspace{10mm}\\
+15 de Junho de 2020}
+
+\begin{document}
+\thispagestyle{empty}
+\maketitle
+
+\tableofcontents{}\label{index:chapters}
+\listoffigures{}\label{index:figures}
+\newpage
+
+\include{chapter1}
+
+\include{chapter2}
+
+\include{chapter3}
+
+\include{chapter4}
+
+% Referencias
+
+\begin{thebibliography}{9}
+  \bibitem{outsystems}
+  \href{http://www.outsystems.com}{\textit{OutSystems}}
+  
+  \bibitem{google maps api}
+  \href{https://developers.google.com/maps/documentation/javascript/reference}{Documentação da \textit{API Google Maps}}
+  
+  \bibitem{places api}
+  \href{https://developers.google.com/places/web-service/intro}{Documentação da \textit{API Places}}
+
+  \bibitem{fullcalendar}
+  \href{https://fullcalendar.io/docs}{Documentação do componente da \textit{Forge FullCalendar Reactive}}
+\end{thebibliography}
+
+\end{document}
