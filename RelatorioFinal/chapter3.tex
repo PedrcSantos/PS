@@ -113,6 +113,16 @@ Um utilizador só terá acesso a outros ecrãs se tiver autenticado, caso contr�
   \caption{Ecrã de autenticação}\label{fig:LoginScreen}
 \end{figure}
 
+\subsection{\textit{Back-office}}\label{subsec:implementacao:back-office}
+
+O \textit{back-office} da \textit{Collaboration Platform} tem como principal motivação a manutenção da mesma e o acesso a funcionalidades que requerem permissões superiores, nomeadamente de \textit{admin} ou de \textit{owner}.
+Posto isto, o \textit{back-office} é implementado num novo módulo e apresenta quatro ecrãs distintos. 
+No ecrã \textit{Necessities} os utilizadores com acesso ao \textit{back-office} têm a possibilidade de verificar as necessidades criadas pela comunidade da empresa, podendo aceitá-las ou eliminá-las. 
+O ecrã \textit{Categories} tem como objetivo a criação e remoção de categorias. 
+No ecrã \textit{ManageUsers} é possível ver todos os utilizadores da plataforma separados entre utilizadores comuns e utilizadores com permissões mais elevadas.
+Deste modo, existe a possibilidade de alterar as permissões associadas a um utilizador, concedendo-lhe permissões superiores ou removendo. 
+Com o intuito de ver as mensagens criadas pela comunidade da empresa, o ecrã \textit{UserMessages} apresenta-as sobre a forma de uma lista e possibilita que cada utilizador sinalize uma mensagem que esteja por resolver como \textit{"resolved"} se aceitar/cumprir o conteúdo da mensagem ou como \textit{"rejected"} se não for o caso.  
+
 
 
 \subsection{\textit{Dashboard}}\label{subsec:implementacao:dashboard}
@@ -240,7 +250,10 @@ Um utilizador, ao criar uma necessidade, tem a opção de escolher se todas as c
 A plataforma tem um sistema de notificações que suporta o seu envio para os utilizadores, num ecrã (figura~\ref{fig:notifications}) onde é possível visualizá-las em detalhe. 
 Os cenários possíveis de envio de notificações consistem em: sempre que existir uma nova candidatura a uma dada necessidade o autor da mesma é notificado; 
 quando um utilizador vê a sua candidatura aceite ou não; 
-e, por último, quando uma necessidade é eliminada, os participantes da mesma são notificados.
+quando uma necessidade é eliminada ou editada, os participantes da mesma são notificados;
+quando um dado utilizador quer desistir da sua participação a uma necessidade, o autor da mesma recebe uma notificação para remover esse participante;
+quando uma mensagem enviada para os administradores da plataforma foi resolvida ou rejeitada;
+e, por último, quando é o dia em que uma necessidade se vai realizar e a mesma tem \textit{QR code} associado, os participantes recebem uma notificação com um link para o \textit{QR code} gerado.
 A cada notificação está associado o \textit{id} do utilizador, o que permite que quando o mesmo navegue até ao ecrã das notificações, 
 lhe sejam apresentadas todas as suas notificações que recebeu, provenientes do registo na base de dados.
 

@@ -45,19 +45,22 @@ Relativamente ao ecrã de \textit{Login} ilustrado na figura~\ref{fig:uc:login},
     \caption{\textit{Use Case} --- \textit{Login}.}\label{fig:uc:login}
 \end{figure}
 
-\subsection{Manutenção da aplicação e \textit{Backoffice}}\label{subsec:manutencao_e_backoffice}
+\subsection{Manutenção da aplicação e \textit{back-office}}\label{subsec:manutencao_e_back-office}
 
-Com o objetivo de realizar operações de manutenção e operações que requerem privilégio superior ao de um utilizador comum foi implementada a aplicação \textit{BackOffice}. 
-Um utilizador com permissões de administrador ou de \textit{owner} tem acesso ao \textit{BackOffice} onde pode criar ou remover categorias, analisar as necessidades criadas pela comunidade empresarial e escolher se as mesmas são aceites ou eliminadas, 
+Com o objetivo de realizar operações de manutenção e operações que requerem privilégio superior ao de um utilizador comum foi implementada a aplicação \textit{back-office}. 
+Um utilizador com permissões de administrador ou de \textit{owner} tem acesso ao \textit{back-office} onde pode criar ou remover categorias, analisar as necessidades criadas pela comunidade empresarial e escolher se as mesmas são aceites e divulgadas na plataforma, ou eliminadas,
 ver todos os utilizadores da plataforma colaborativa e alterar as suas permissões (\textit{roles}) e analisar mensagens produzidas por um dado utilizador comum com pedidos/sugestões para os utilizadores com permissões superiores (\textit{admin & owner}).  
 
-
+%%USE CASE back-office
 
 \subsection{\textit{Home Page --- Dashboard}}\label{subsec:dashboard}
 
-Após o \textit{login} na aplicação o utilizador será redirecionado para um novo ecrã que irá conter um \textit{dashboard} com o intuito de organizar e 
-apresentar informação pertinente de uma forma apelativa. Este ecrã começa por apresentar o número total de utilizadores registados na aplicação e o total de necessidades criadas até ao momento organizadas por nível de prioridade(Low, Medium e High). Ao carregar num destes niveis prioridade especificados no ecrã o utilizadoré redirecionado para o ecrã das necessidades, apresentando a lista das mesmas com o filtro correspondente à prioridade selecionada. Contém um gráfico circular que faz uma estatística relativa ao número de necessidades que existem em cada categoria em que a seleção de uma das categorias deste gráfico redirecionará o utilizador para o ecrã das necessidades, apresentando a lista das mesmas com o filtro correspondente à categoria selecionada. Apresenta o top 5 de necessidades criadas mais recentemente e aceites pelo administrador, em que cada uma tem um link que redireciona o utilizador para o detalhe da mesma e por fim mostra ainda três top 5 de utilizadores que têm mais necessidades criadas por nível de prioridade. 
-
+No contexto da aplicação principal da plataforma colaborativa, acessível a todos os utilizadores autenticados, após o \textit{login} na aplicação o utilizador será redirecionado para um novo ecrã que irá conter um \textit{dashboard} com o intuito de organizar e 
+apresentar a informação de uma forma apelativa. Este ecrã começa por apresentar o número total de utilizadores registados na aplicação e o total de necessidades criadas até ao momento organizadas por nível de prioridade(Low, Medium e High). 
+Ao carregar num destes níveis de prioridade especificados no ecrã o utilizador é redirecionado para o ecrã das necessidades, apresentando a lista das mesmas com o filtro correspondente à prioridade selecionada. 
+Este \textit{Dashboard} contém ainda um gráfico circular que faz uma estatística relativa ao número de necessidades que existem em cada categoria. A seleção de uma das categorias deste gráfico redirecionará o utilizador para o ecrã das necessidades, apresentando a lista das mesmas com o filtro correspondente à categoria selecionada.
+É também apresentado o \textit{top 5} de necessidades criadas mais recentemente e aceites por utilizadores com permissões de administrador, onde cada uma tem um link que redireciona o utilizador para o detalhe da mesma. 
+Por fim é apresentado o top 5 de utilizadores que têm mais necessidades criadas para cada um dos níveis de prioridade que uma necessidade pode ter.
 
 \subsection{Registo das necessidades internas da empresa, gestão de candidaturas, notificações e integração com o google maps}\label{subsec:necessitiesCandidatesNotificationsGoogleMaps}
 
@@ -71,8 +74,8 @@ A funcionalidade de registo de necessidades internas da empresa estão organizad
 
 Para isso, é fundamental que exista um ecrã que apresente todas as necessidades da empresa. 
 Um utilizador, caso queira registar uma necessidade, irá escolher a categoria que melhor se adequa à mesma. 
-Caso não exista, este, se tiver permissões de admin, poderá criar uma categoria nova no \textit{back-office} da aplicação. 
-Neste ecrã será possível filtrar as necessidades pela sua categoria e pelo seu grau de urgência.
+Caso não exista, este, se tiver permissões de \textit{admin}, poderá criar uma categoria nova no \textit{back-office}. 
+Neste ecrã será possível filtrar as necessidades pela sua categoria e pelo seu grau de urgência (prioridade).
 
 \begin{figure}[H]
     \centering
@@ -104,20 +107,24 @@ O ecrã que permite mostrar as notificações associadas a cada utilizador é ac
 Exemplificando, para organizar eventos ou feiras de emprego, o utilizador seleciona a categoria \textit{Planning of events}.
 
 Se por outro lado, tivermos o objetivo de realizar apresentações informais de partilha de conhecimento o utilizador seleciona a categoria \textit{Brown Bags}. 
-Todos os utilizadores devidamente autenticados podem candidatar-se para assistir a uma dada apresentação ou para a orientar. 
-No contexto da necessidade é definida uma linha temporal que consiste numa primeira fase de candidaturas para escolha do orientador 
-(ou orientadores) que irão conduzir a apresentação, seguida de uma segunda fase de candidaturas para utilizadores que queiram assistir à apresentação. 
-O autor de uma apresentação, no ecrã de detalhe da mesma, terá acesso a quem se candidatou para a orientar, podendo escolher um ou mais orientadores 
+Todos os utilizadores devidamente autenticados podem candidatar-se ás necessidades existentes, tendo livre acesso para leitura dos detalhes de cada uma. 
+O autor de uma necessidade é o utilizador que a criou. Tem as permissões de poder editar e eliminar a mesma, associar recursos e gerir participantes/colaboradores.
+No contexto da necessidade, é definida uma linha temporal que consiste numa primeira fase de candidaturas para escolha do orientador 
+(ou orientadores), dando origem ao conceito de \textit{"Collaborator"}. 
+Um utilizador adquire este cargo, para uma dada necessidade, após ser aceite pelo autor da mesma. Este utilizador adquire as mesmas permissões de um participante comum e adquire também as permissões de poder editar a necessidade, com exceção da data do evento e de aceitar ou rejeitar participantes. 
+O autor de uma necessidade, no ecrã de detalhe da mesma, terá acesso a quem se candidatou para a orientar (ser \textit{Collaborator} nesta necessidade), podendo escolher um ou mais orientadores 
 com base na descrição apresentada pelos mesmos. 
-Numa segunda fase após a escolha do(s) mesmo(s), o autor pode ver os utilizadores que se 
-candidataram à necessidade no seu ecrã de detalhe e todos os utilizadores autenticados podem ver quem foi aceite/vai ao evento.
+A linha temporal definida no contexto de uma necessidade tem ainda uma segunda fase de candidaturas para permitir o acesso como participante. 
+Um utilizador torna-se um participante após ser aceite pelo autor no caso de haver filtragem dos candidatos ou, no caso de não se verificar a opção de haver filtragem por parte do autor, a candidatura é aceite automaticamente. O cargo de participante permite também a participação nos recursos associados à necessidade.
+
+Todos os utilizadores autenticados podem ver quem foi aceite como participante e como colaborador.
 
 \subsection{Divulgação e calendarização das necessidades}
 
-Com o objetivo de divulgar e calendarizar as necessidades internas da empresa, a barra de navegação da aplicação terá um botão que, quando carregado, 
+Com o objetivo de divulgar e calendarizar as necessidades internas da empresa, a barra de navegação da aplicação apresenta um botão com o nome \textit{Calendar} que, quando pressionado, 
 redireciona o utilizador para um ecrã que apresenta um calendário com o qual ele poderá interagir. 
-Neste calendário são apresentados todos os eventos organizados, na sua respetiva data, e existe a possibilidade de filtrar os eventos em que o mesmo participará. 
-Após a seleção de um dia no calendário, são apresentados os eventos, dando a possibilidade ao utilizador de ver os detalhes individuais após carregar num deles, 
+Neste calendário são apresentados todos os eventos organizados, na sua respetiva data, e existe a possibilidade de filtrar os eventos em que o utilizador participará. 
+Após a seleção de um dia no calendário, são apresentadas as necessidades, dando a possibilidade ao utilizador de ver os detalhes individuais após carregar numa delas, 
 num novo ecrã.
 
 \begin{figure}[H]
@@ -130,6 +137,9 @@ Para ser possível divulgar as necessidades da empresa de forma uniforme por tod
 um botão denominado \textit{Announcements} que, quando carregado, abre um ecrã  (figura~\ref{fig:uc:announcements}) que contém os comunicados sobre a forma de uma lista. 
 Sempre que for emitido um novo comunicado todos os utililizadores recebem uma notificação com o título do mesmo e, ao carregar nessa notificação, são redirecionados para os detalhes do comunicado. 
 Estes comunicados foram criados por um utilizador com permissões de administrador, sendo visíveis por todos os que estejam autenticados.
+Um utilizador comum pode, no mesmo ecrã em que são apresentados os comunicados, enviar uma mensagem para outros utilizadores com permissões mais elevadas de modo a comunicar sugestões ou observações. 
+Um exemplo de uma mensagem a enviar pode ser quando é necessário criar uma nova categoria, algo que apenas administradores e \textit{owners} podem fazer.
+Estas mensagens são apresentadas no \textit{back-office} da plataforma onde cada utilizador que tenha acesso ao mesmo pode concretizar os pedidos que constam nas mensagens, marcando-as como "resolvidas" ou rejeitá-los, marcando-as como "rejeitadas".
 
 \begin{figure}[H]
     \centering
@@ -162,13 +172,3 @@ A base de dados está alojada numa \textit{cloud}, onde são guardadas todas as 
 %Para isso, foram criadas duas tabelas. Uma delas mostra todos os utilizadores com apenas a role de registado e a possibilidade de para cada um, ser promovido a 
 %administrador, e a outra mostra todos os utilizadores com a role de administrador ou owner e a possibilidade de para cada um, ser despromovido de administrador com exceção do onwer. 
 %Neste caso, apenas os utilizadores com a role de owner podem despromover administradores a utilizadores registados.
-
-
-No contexto do uma necessidade, existem os seguintes roles:
-
-Autor - Utilizador que criou a necessidade. Tem as permissões de poder editar e eliminar a necessidade.
-
-Participante - Utilizador que se candidata durante a fase de participantes e se aceite pode, opcionalmente, participar também nos recursos associados à mesma.
-
-Colaborador - Utilizador que se candidatou a uma necessidade durante a fase de colaborador. Se aceite por parte do autor, 
-adquire as mesmas permissões de um participante comum e adquire também as permissões de poder editar a necessidade com exceção da data do evento e de aceitar/rejeitar participantes desta necessidade. 
