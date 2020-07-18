@@ -24,7 +24,19 @@ As funcionalidades principais da plataforma \textit{Corporate Collaboration} est
     \caption{\textit{Use Case} --- Ações gerais.}\label{fig:uc:generalActions}
 \end{figure}
 
+\subsection{Módulos constituintes da \textit{Collaboration Platform} e \textit{roles} associados}
+
+A plataforma de colaboração desenvolvida é constituída por dois módulos denominados \textit{back-office} e \textit{UserEndPoints}. 
+O acesso ao \textit{back-office} é realizado apenas por utilizadores com permissões de administrador ou de \textit{owner}. 
+Um \textit{owner} é descrito como a entidade superior da hierarquia de \textit{roles}, só existe um utilizador com esta permissão. 
+Um administrador é um utlizador com maiores permissões que um utilizador comum, descritas na figura XXXXXX. 
+No módulo \textit{back-office} são realizadas todas as operações de manutenção e funcionamento da plataformma colaborativa.
+O módulo \textit{UserEndPoints} oferece o acesso ás funcionalidades principais que a \textit{Collaboration Platform} apresenta e pode ser acedido por todos os utilizadores registados na aplicação.
+As funcionalidades a que cada \textit{role} (utilizador comum, administrador e \textit{owner}) tem acesso são descritas na figura XXXX.
+
+
 \subsection{Registo e Autenticação}\label{subsec:login}
+
 Para desenvolver a funcionalidade de registo e autenticação na plataforma de colaboração é necessário existir uma tabela 
 na base de dados que guarde as credenciais e informação básica de cada utilizador, nomeadamente 
 o \textit{email}, \textit{password}, \textit{username}, primeiro e último nome. 
@@ -62,7 +74,7 @@ Este \textit{Dashboard} contém ainda um gráfico circular que faz uma estatíst
 É também apresentado o \textit{top 5} de necessidades criadas mais recentemente e aceites por utilizadores com permissões de administrador, onde cada uma tem um link que redireciona o utilizador para o detalhe da mesma. 
 Por fim é apresentado o top 5 de utilizadores que têm mais necessidades criadas para cada um dos níveis de prioridade que uma necessidade pode ter.
 
-\subsection{Registo das necessidades internas da empresa, gestão de candidaturas, notificações e integração com o google maps}\label{subsec:necessitiesCandidatesNotificationsGoogleMaps}
+\subsection{Registo das necessidades internas da empresa, gestão de candidaturas, associação de recursos, notificações e integração com o google maps}\label{subsec:necessitiesCandidatesNotificationsGoogleMaps}
 
 A funcionalidade de registo de necessidades internas da empresa estão organizadas em categorias de modo a facilitar a navegação do utilizador pelas mesmas.
 
