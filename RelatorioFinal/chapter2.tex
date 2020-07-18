@@ -60,8 +60,8 @@ Relativamente ao ecrã de \textit{Login} ilustrado na figura~\ref{fig:uc:login},
 \subsection{Manutenção da aplicação e \textit{back-office}}\label{subsec:manutencao_e_back-office}
 
 Com o objetivo de realizar operações de manutenção e operações que requerem privilégio superior ao de um utilizador comum foi implementada a aplicação \textit{back-office}. 
-Um utilizador com permissões de administrador ou de \textit{owner} tem acesso ao \textit{back-office} onde pode criar ou remover categorias, analisar as necessidades criadas pela comunidade empresarial e escolher se as mesmas são aceites e divulgadas na plataforma, ou eliminadas,
-ver todos os utilizadores da plataforma colaborativa e alterar as suas permissões (\textit{roles}) e analisar mensagens produzidas por um dado utilizador comum com pedidos/sugestões para os utilizadores com permissões superiores (\textit{admin & owner}).  
+Um utilizador com permissões de administrador ou de \textit{owner} tem acesso ao \textit{back-office} onde pode criar ou remover categorias, analisar as necessidades criadas pela comunidade empresarial e escolher se as mesmas são aceites e divulgadas na plataforma ou eliminadas,
+ver todos os utilizadores da plataforma colaborativa e as suas permissões (alterar o seu \textit{role}), sendo que o \textit{owner} pode alterá-las e analisar mensagens produzidas por um dado utilizador comum com pedidos/sugestões para os utilizadores com permissões superiores (\textit{admin & owner}).  
 
 %%USE CASE back-office
 
@@ -127,9 +127,12 @@ Um utilizador adquire este cargo, para uma dada necessidade, após ser aceite pe
 O autor de uma necessidade, no ecrã de detalhe da mesma, terá acesso a quem se candidatou para a orientar (ser \textit{Collaborator} nesta necessidade), podendo escolher um ou mais orientadores 
 com base na descrição apresentada pelos mesmos. 
 A linha temporal definida no contexto de uma necessidade tem ainda uma segunda fase de candidaturas para permitir o acesso como participante. 
-Um utilizador torna-se um participante após ser aceite pelo autor no caso de haver filtragem dos candidatos ou, no caso de não se verificar a opção de haver filtragem por parte do autor, a candidatura é aceite automaticamente. O cargo de participante permite também a participação nos recursos associados à necessidade.
-
+Um utilizador torna-se um participante após ser aceite pelo autor no caso de haver filtragem dos candidatos ou, no caso de não se verificar a opção de haver filtragem por parte do autor, a candidatura é aceite automaticamente. 
+O cargo de participante permite também a participação nos recursos associados à necessidade.
 Todos os utilizadores autenticados podem ver quem foi aceite como participante e como colaborador.
+Com o intuito de poder realizar a marcação de presenças de cada um dos participantes a uma necessidade, foi introduzido na plataforma o conceito de \textit{QR Code}. 
+Os mesmos são gerados individualmente para cada participante no dia em que o evento terá lugar e os utilizadores com papéis de autor ou colaborador da necessidade podem fazer scan dos \textit{QR Codes} de cada um dos participantes.
+Após o scan de um \textit{QR Code} de um dado participante, o mesmo será sinalizado como presente.
 
 \subsection{Divulgação e calendarização das necessidades}
 
@@ -150,7 +153,7 @@ um botão denominado \textit{Announcements} que, quando carregado, abre um ecrã
 Sempre que for emitido um novo comunicado todos os utililizadores recebem uma notificação com o título do mesmo e, ao carregar nessa notificação, são redirecionados para os detalhes do comunicado. 
 Estes comunicados foram criados por um utilizador com permissões de administrador, sendo visíveis por todos os que estejam autenticados.
 Um utilizador comum pode, no mesmo ecrã em que são apresentados os comunicados, enviar uma mensagem para outros utilizadores com permissões mais elevadas de modo a comunicar sugestões ou observações. 
-Um exemplo de uma mensagem a enviar pode ser quando é necessário criar uma nova categoria, algo que apenas administradores e \textit{owners} podem fazer.
+Um exemplo de uma mensagem a enviar pode ser quando é necessário criar uma nova categoria, algo que apenas administradores e o \textit{owner} podem fazer.
 Estas mensagens são apresentadas no \textit{back-office} da plataforma onde cada utilizador que tenha acesso ao mesmo pode concretizar os pedidos que constam nas mensagens, marcando-as como "resolvidas" ou rejeitá-los, marcando-as como "rejeitadas".
 
 \begin{figure}[H]
@@ -177,10 +180,3 @@ e \textit{Aggregates} (ação com o propósito de aceder à base de dados para r
 Também é disponibilizado pela \textit{OutSystems~\cite{outsystems}}, um \textit{eSpace} por \textit{module} que contém elementos essenciais 
 ao desenvolvimento, como os enunciados anteriormente.
 A base de dados está alojada numa \textit{cloud}, onde são guardadas todas as entidades dos vários módulos.
-
-
-%UsersManagers
-%Foi desenvolvido um ecrã chamado ManageUsers que permite aos utilizadores com as permissões de admin e owner fazer uma gestão de todos os utilizadores da aplicação.
-%Para isso, foram criadas duas tabelas. Uma delas mostra todos os utilizadores com apenas a role de registado e a possibilidade de para cada um, ser promovido a 
-%administrador, e a outra mostra todos os utilizadores com a role de administrador ou owner e a possibilidade de para cada um, ser despromovido de administrador com exceção do onwer. 
-%Neste caso, apenas os utilizadores com a role de owner podem despromover administradores a utilizadores registados.

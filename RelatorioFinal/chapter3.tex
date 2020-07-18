@@ -84,7 +84,7 @@ Uma necessidade é caracterizada por diversos elementos dos quais destacamos o \
 podendo ter os valores \"Closed\", \"Active\" ou \"Archived\". A \textit{CurrentPhase} que indica a fase de candidaturas atual, 
 podendo ser para colaboradores ou participantes, a \textit{ColaboratorDate} que representa a data limite das candidaturas 
 à posição de colaborador, \textit{AcceptanceSettings} que indica se para a necessidade em causa são aceites todos os participantes ou se existe uma filtragem por parte do autor, 
-\textit{isAcceptedByAdmin} que indica se a necessidade criada já foi aceite por um administrador ou um \textit{owner} no \textit{back-office}, 
+\textit{isAcceptedByAdmin} que indica se a necessidade criada já foi aceite por um administrador ou pelo \textit{owner} no \textit{back-office}, 
 \textit{ParticipantsCounter} que indica o número de participantes desta necessidade, e por último, \textit{MaxParticipants} que serve para guardar o número máximo de participantes que podem existir nesta necessidade. 
 As tabelas \textit{NecessityImage} e \textit{NecessityFile} existem para o propósito de guardar ficheiros, 
 aliviando a quantidade de dados guardada em cada tuplo \textit{Necessity}, 
@@ -103,7 +103,8 @@ Com o intuito de suportar a funcionalidade de envio de mensagens entre utilizado
 Esta tabela tem os atributos necessários para armazenar o tópico de uma mensagem, o seu conteúdo, o utilizador que a criou, a sua data de criação e, por último, o estado da mesma, que pode tomar os valores presentes na entidade estática \textit{ParticipantStatus}. 
 Estes valores são \textit{accepted} para mensagens cujo conteúdo foi cumprido ou aceitado, \textit{rejected} para mensagens cujo conteúdo não o foi e \textit{pending} para aquelas que ainda não obtiveram resposta.
 Os comunicados feitos na plataforma são suportados pela entidade \textit{Announcements}. As notificações apresentadas na plataforma são suportadas pela entidade \textit{Notifications} em que cada notificação está associada a um utilizador através do seu id, o seu conteúdo é guardado no atributo \textit{Info} e a hora da emissão da notificação no atributo \textit{DateTime}. 
-Um utilizador pode ainda ter o cargo de administrador, cujos privilégios incluem editar as categorias representadas pela entidade \textit{Category}.
+Um utilizador pode ainda ter o cargo de administrador, cujos privilégios incluem editar as categorias representadas pela entidade \textit{Category}. Esta entidade tem como atributos o nome da categoria criada, se é uma categoria cujas necessidades vão necessitar de confirmação de presença através de \textit{QR Code}, quantidade de necessidades criadas associadas a esta categoria e se o dia do evento presente em cada necessidade associada a esta categoria corresponde ao dia em que o evento tem lugar ou simplesmente ao final da data de candidaturas. 
+Um pequeno exemplo para melhor entendimento deste último atributo é, numa categoria que tenha como conceito a procura de utilizadores para desenvolver peças de software a data associada ás necessidades (atributo \textit{eventDate} da entidade \textit{Necessity}) é de fim da fase de candidaturas para produzir a peça de software em questão, enquanto que uma categoria que tenha como conceito atividades lúdicas terá o atributo \textit{eventDate} das suas necessidades como a data em que o evento irá ocorrer.
 
 \section{Implementação}\label{sec:implementacao}
 
@@ -124,10 +125,56 @@ Um utilizador só terá acesso a outros ecrãs se tiver autenticado, caso contr�
 O \textit{back-office} da \textit{Collaboration Platform} tem como principal motivação a manutenção da mesma e o acesso a funcionalidades que requerem permissões superiores, nomeadamente de \textit{admin} ou de \textit{owner}.
 Posto isto, o \textit{back-office} é implementado num novo módulo e apresenta quatro ecrãs distintos. 
 No ecrã \textit{Necessities} os utilizadores com acesso ao \textit{back-office} têm a possibilidade de verificar as necessidades criadas pela comunidade da empresa, podendo aceitá-las ou eliminá-las. 
+Estas necessidades são apresentadas sobre a forma de uma lista, tal como demonstrado na figura TALXXX. Ao pressionar uma delas, serão apresentados os detalhes da mesma e dois ícones que permitirão aceitar ou rejeitar. 
+
+\begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.35]{figures/backoffice_necessities.png}
+  \caption{Ecrã das necessidades no back-office}\label{fig:backoffice_necessities}
+\end{figure}
+
+
+
 O ecrã \textit{Categories} tem como objetivo a criação e remoção de categorias. 
-No ecrã \textit{ManageUsers} é possível ver todos os utilizadores da plataforma separados entre utilizadores comuns e utilizadores com permissões mais elevadas.
-Deste modo, existe a possibilidade de alterar as permissões associadas a um utilizador, concedendo-lhe permissões superiores ou removendo. 
-Com o intuito de ver as mensagens criadas pela comunidade da empresa, o ecrã \textit{UserMessages} apresenta-as sobre a forma de uma lista e possibilita que cada utilizador sinalize uma mensagem que esteja por resolver como \textit{"resolved"} se aceitar/cumprir o conteúdo da mensagem ou como \textit{"rejected"} se não for o caso.  
+As mesmas são apresentadas numa tabela, como é possível verificar na figura TALXXX, e cada uma tem uma checkbox associada que, quando selecionada, irá deixar a categoria apta para ser eliminada, ao carregar no botão delete. 
+Para criar uma nova, basta carregar no botão create e preencher o nome, se é necessária verificação de presenças por \textit{QR Code} e como é interpretada a data de evento de uma necessidade associada a esta nova categoria.
+
+\begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.35]{figures/backoffice_categories.png}
+  \caption{Ecrã das categorias}\label{fig:backoffice_categories}
+\end{figure}
+
+
+
+No ecrã \textit{ManageUsers} é possível ver todos os utilizadores da plataforma separados entre utilizadores comuns e utilizadores com permissões mais elevadas através de duas \textit{tabs}.
+Deste modo, na tab dos utilizadores comuns (representada na figura TALXXX) existe a possibilidade de alterar as permissões associadas a um utilizador, concedendo-lhe permissões superiores através do botão \textit{Grant admin}.
+Na tab de \textit{Admins}, apresentada na figura TALXXX, existe a possibilidade de despromover um utilizador de administrador a utilizador comum, através do botão \textit{revoke admin}. 
+Estas mudanças de \textit{roles} apenas podem ser feitas pelo \textit{owner}, a entidade superior da hierarquia de \textit{roles}. Um utilizador com permissões de administrador apenas pode ver os utilizadores e o seu \textit{role}. 
+
+\begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.35]{figures/backoffice_users_users.png}
+  \caption{Ecrã \textit{ManageUsers} com a tab dos utilizadores comuns ativa }\label{fig:backoffice_users_users}
+\end{figure}
+
+
+
+\begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.35]{figures/backoffice_users_admin.png}
+  \caption{Ecrã \textit{ManageUsers} com a tab dos \textit{admins} e \textit{owner} ativa }\label{fig:backoffice_users_admin}
+\end{figure}
+
+Com o intuito de ver as mensagens criadas pela comunidade da empresa, o ecrã \textit{UserMessages} (figura TALXXX) apresenta-as sobre a forma de uma lista e,
+ao carregar numa mensagem, é apresentado o detalhe da mesma. 
+Cada utilizador com permisssões para aceder ao \textit{back-office} pode sinalizar uma mensagem que esteja por resolver (\textit{"unresolved"}) como \textit{"resolved"} se aceitar/cumprir o conteúdo da mensagem ou como \textit{"rejected"} se não for o caso.  
+
+\begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.35]{figures/backoffice_userMessages.png}
+  \caption{Ecrã \textit{UserMessages}}\label{fig:backoffice_user_messages}
+\end{figure}
 
 
 
@@ -146,20 +193,16 @@ Para cada uma das prioridades que as necessidades podem ter, é apresentado um \
 \end{figure}
 
 
-\subsection{Criação e edição de categorias}\label{subsec:implementacao:categories}
-
-Um utilizador com permissões de \textit{admin} tem a possibilidade de aceder ao ecrã \textit{Categories} e de criar ou eliminar categorias. 
-É apresentado um \textit{widget} tabela com todas as categorias existentes e um botão delete que permite eliminar as selecionadas.
-O processo de criação de uma nova categoria é feito carregando no botão create e inserindo o nome da nova categoria no \textit{popup} que aparece no ecrã, seguido do botão \textit{save}.
-
-
 \subsection{Visualização de necessidades}\label{subsec:implementacao:necessities}
 O utilizador ao carregar no botão \textit{Necessities} presente na barra da aplicação, será redirecionado para o ecrã responsável pela apresentação das necessidades demonstrado na figura~\ref{fig:NecessitiesScreen}. 
 O intuito do mesmo consiste na apresentação das necessidades criadas pela comunidade empresarial, sendo possível aplicar filtros e/ou pesquisar pelo título de uma necessidade de modo a que sejam apresentadas apenas as necessidades alvo.
-As necessidades são apresentadas num \textit{widget} tabela, cujas colunas apresentam informação relevante como título, categoria, prioridade, estado, data de criação e data em que a necessidade irá decorrer. Sempre que o utilizador pretender criar uma nova necessidade, apenas tem que carregar no botão \textit{Create Necessity} e será redirecionado para um novo ecrã, onde poderá completar a criação.
+As necessidades são apresentadas num \textit{widget} tabela, cujas colunas apresentam informação relevante como título, categoria, prioridade, estado, data de criação, data em que a necessidade irá decorrer e o número de participantes. 
+Sempre que o utilizador pretender criar uma nova necessidade, apenas tem que carregar no botão \textit{Create Necessity} e será redirecionado para um novo ecrã, onde poderá completar a criação.
 A seleção do título de uma necessidade promove a navegação para o ecrã dos detalhes da mesma.
 A barra de pesquisa permite que o utilizador procure uma necessidade pelo seu título.
 Os filtros aplicáveis são apresentados em dois \textit{dropdowns}, um para permitir a escolha de qual a prioridade e outro para seleção da(s) categoria(s).
+O \textit{ widget switch} presente neste ecrã com a descrição \textit{"show only my necessities"}, quando ativo, reorganiza a tabela das necessidades de modo a só mostrar as que o utilizador é autor.
+É importante referir que todas as necessidades apresentadas neste ecrã foram previamente aceites por um utilizador com \textit{role} de \textit{admin} ou \textit{owner} no \textit{back-office}, com exceção de quando o \textit{switch} de mostrar apenas as necessidades do utilizador está ativo, estas aparecem mesmo que ainda não tenham sido aceites, mas apenas ao utilizador que neste caso é sempre o autor das necessidades que aparecem. 
 Sempre que exista uma mudança na seleção de algum dos \textit{widgets} de filtragem de necessidades ou uma introdução de texto na barra de pesquisa, a tabela é atualizada para apresentar apenas aquelas que verifiquem as características alvo. 
 As informações de cada uma das necessidades, das categorias existentes e das prioridades são obtidas comunicando com o servidor através de \textit{Aggregates}. 
 Os \textit{Aggregates} são \textit{querys} optimizadas à base de dados de modo a retornar informação de forma eficiente e apresentá-la nos \textit{widgets} do ecrã.
