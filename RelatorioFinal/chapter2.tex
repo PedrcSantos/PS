@@ -29,10 +29,16 @@ As funcionalidades principais da plataforma \textit{Corporate Collaboration} est
 A plataforma de colaboração desenvolvida é constituída por dois módulos denominados \textit{back-office} e \textit{UserEndPoints}. 
 O acesso ao \textit{back-office} é realizado apenas por utilizadores com permissões de administrador ou de \textit{owner}. 
 Um \textit{owner} é descrito como a entidade superior da hierarquia de \textit{roles}, só existe um utilizador com esta permissão. 
-Um administrador é um utlizador com maiores permissões que um utilizador comum, descritas na figura XXXXXX. 
+Um administrador é um utlizador com maiores permissões que um utilizador comum, descritas na figura~\ref{fig:uc:user_admin_scheme}. 
 No módulo \textit{back-office} são realizadas todas as operações de manutenção e funcionamento da plataformma colaborativa.
 O módulo \textit{UserEndPoints} oferece o acesso ás funcionalidades principais que a \textit{Collaboration Platform} apresenta e pode ser acedido por todos os utilizadores registados na aplicação.
-As funcionalidades a que cada \textit{role} (utilizador comum, administrador e \textit{owner}) tem acesso são descritas na figura XXXX.
+As funcionalidades a que cada \textit{role} (utilizador comum, administrador e \textit{owner}) tem acesso são descritas na figura~\ref{fig:uc:user_admin_scheme}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{figures/user_admin_owner_scheme.png}
+    \caption{Funcionalidades a que cada \textit{Role} tem acesso.}\label{fig:uc:user_admin_scheme}
+\end{figure}
 
 
 \subsection{Registo e Autenticação}\label{subsec:login}
