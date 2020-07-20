@@ -7,10 +7,14 @@ atual.
 \section{Estado da Arte}\label{sec:estadoDaArte}
 As plataformas de colaboração existentes no mercado atual tais como a \textit{Microsoft SharePoint} ou a \textit{BaseCamp} apresentam um elevado nível de complexidade, 
 incluindo ferramentas como calendários partilhados, partilha de ficheiros, mensagens instantâneas, armazenamento na \textit{cloud}, video-conferência, entre outros. 
+
+\par
 A aplicação desenvolvida neste âmbito não procura igualar todas as funcionalidades das plataformas já existentes, 
 mas sim, agilizar a dinâmica de atividades internas que ocorrem diariamente nas empresas. 
 Visa, essencialmente, facilitar a procura de pessoas para cumprir certas necessidades que existam no âmbito das atividades internas da empresa, 
 necessidades estas que permitem definir uma tarefa que tem de ser realizada ou um evento que será organizado no contexto da dinâmica interna da empresa. 
+
+\par 
 Estas necessidades são auxiliadas por recursos que permitem gerir candidaturas e participantes das mesmas, 
 assim como apresentar informações sobre alojamento, refeições, transporte e localização, se for caso disso.
 
@@ -27,16 +31,24 @@ As funcionalidades principais da plataforma \textit{Corporate Collaboration} est
 \subsection{Módulos constituintes da \textit{Collaboration Platform} e \textit{roles} associados}
 
 A plataforma de colaboração desenvolvida é constituída por dois módulos denominados \textit{back-office} e \textit{UserEndPoints}. 
+
+\par
 O acesso ao \textit{back-office} é realizado apenas por utilizadores com permissões de administrador ou de \textit{owner}. 
 Um \textit{owner} é descrito como a entidade superior da hierarquia de \textit{roles}, só existe um utilizador com esta permissão. 
-Um administrador é um utlizador com maiores permissões que um utilizador comum, descritas na figura~\ref{fig:uc:user_admin_scheme}. 
+Um administrador é um utlizador com permissões superiores a um utilizador comum, permissões estas descritas na figura~\ref{fig:uc:user_admin_scheme}. 
+
+\par
 No módulo \textit{back-office} são realizadas todas as operações de manutenção e funcionamento da plataformma colaborativa.
-O módulo \textit{UserEndPoints} oferece o acesso ás funcionalidades principais que a \textit{Collaboration Platform} apresenta e pode ser acedido por todos os utilizadores registados na aplicação.
+
+\par
+O módulo \textit{UserEndPoints} suporta o acesso ás principais funcionalidades que a \textit{Collaboration Platform} apresenta e pode ser acedido por todos os utilizadores registados na aplicação.
+
+\par
 As funcionalidades a que cada \textit{role} (utilizador comum, administrador e \textit{owner}) tem acesso são descritas na figura~\ref{fig:uc:user_admin_scheme}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.6]{figures/user_admin_owner_scheme.png}
+    \includegraphics[scale=0.4]{figures/user_admin_owner_scheme.png}
     \caption{Funcionalidades a que cada \textit{Role} tem acesso.}\label{fig:uc:user_admin_scheme}
 \end{figure}
 
@@ -63,26 +75,40 @@ Relativamente ao ecrã de \textit{Login} ilustrado na figura~\ref{fig:uc:login},
     \caption{\textit{Use Case} --- \textit{Login}.}\label{fig:uc:login}
 \end{figure}
 
-\subsection{Manutenção da aplicação e \textit{back-office}}\label{subsec:manutencao_e_back-office}
+\subsection{Manutenção da aplicação e \textit{Back-Office}}\label{subsec:manutencao_e_back-office}
 
-Com o objetivo de realizar operações de manutenção e operações que requerem privilégio superior ao de um utilizador comum foi implementada a aplicação \textit{back-office}. 
+Com o objetivo de realizar operações de manutenção e operações que requerem privilégio superior ao de um utilizador comum foi implementado um novo módulo, denominado \textit{back-office}. 
+
+\par 
 Um utilizador com permissões de administrador ou de \textit{owner} tem acesso ao \textit{back-office} onde pode criar ou remover categorias, analisar as necessidades criadas pela comunidade empresarial e escolher se as mesmas são aceites e divulgadas na plataforma ou eliminadas,
-ver todos os utilizadores da plataforma colaborativa e as suas permissões (alterar o seu \textit{role}), sendo que o \textit{owner} pode alterá-las e analisar mensagens produzidas por um dado utilizador comum com pedidos/sugestões para os utilizadores com permissões superiores (\textit{admin \& owner}).  
+ver todos os utilizadores da plataforma colaborativa e as suas permissões (sendo que o \textit{owner} pode alterá-las) e analisar mensagens produzidas por um dado utilizador comum com pedidos/sugestões para os utilizadores com permissões superiores (\textit{admin ou owner}).  
 
-%%USE CASE back-office
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{figures/back-office_use_case (1).png}
+    \caption{\textit{Use Case} --- Back-Office.}\label{fig:uc:backoffice_use_case}
+\end{figure}
+
+\newpage
 
 \subsection{\textit{Home Page --- Dashboard}}\label{subsec:dashboard}
 
-No contexto da aplicação principal da plataforma colaborativa, acessível a todos os utilizadores autenticados, após o \textit{login} na aplicação o utilizador será redirecionado para um novo ecrã que irá conter um \textit{dashboard} com o intuito de organizar e 
-apresentar a informação de uma forma apelativa. Este ecrã começa por apresentar o número total de utilizadores registados na aplicação e o total de necessidades criadas até ao momento organizadas por nível de prioridade(Low, Medium e High). 
+No contexto do módulo \textit{UserEndPoints}, é no domínio do mesmo que se concentram as principais funcionalidades da \textit{Collaboration Platform}, descritas doravante. 
+Estas são acessíveis a todos os utilizadores autenticados e, logo após o \textit{login}, o utilizador será redirecionado para um novo ecrã que irá conter um \textit{dashboard} com o intuito de organizar e 
+apresentar a informação de uma forma apelativa. 
+\par
+Este ecrã apresenta o número total de utilizadores registados na aplicação e o total de necessidades criadas até ao momento organizadas por nível de prioridade (Low, Medium e High). 
 Ao carregar num destes níveis de prioridade especificados no ecrã o utilizador é redirecionado para o ecrã das necessidades, apresentando a lista das mesmas com o filtro correspondente à prioridade selecionada. 
-Este \textit{Dashboard} contém ainda um gráfico circular que faz uma estatística relativa ao número de necessidades que existem em cada categoria. A seleção de uma das categorias deste gráfico redirecionará o utilizador para o ecrã das necessidades, apresentando a lista das mesmas com o filtro correspondente à categoria selecionada.
-É também apresentado o \textit{top 5} de necessidades criadas mais recentemente e aceites por utilizadores com permissões de administrador, onde cada uma tem um link que redireciona o utilizador para o detalhe da mesma. 
-Por fim é apresentado o top 5 de utilizadores que têm mais necessidades criadas para cada um dos níveis de prioridade que uma necessidade pode ter.
+\par
+Este \textit{Dashboard} contém ainda um gráfico circular que demonstra uma estatística relativa ao número de necessidades que existem em cada categoria. A seleção de uma das categorias deste gráfico redirecionará o utilizador para o ecrã das necessidades, apresentando a lista das mesmas com o filtro correspondente à categoria selecionada.
+\par
+É também apresentado o \textit{top 5} de necessidades criadas mais recentemente e aceites por utilizadores com permissões de administrador (ou pelo \textit{owner}), onde cada uma tem um link que redireciona o utilizador para o detalhe da mesma. 
+\par
+Por fim, é apresentado o top 5 de utilizadores que têm mais necessidades criadas para cada um dos níveis de prioridade que uma necessidade pode ter.
 
 \subsection{Registo das necessidades internas da empresa, gestão de candidaturas, associação de recursos, notificações e integração com o google maps}\label{subsec:necessitiesCandidatesNotificationsGoogleMaps}
 
-A funcionalidade de registo de necessidades internas da empresa estão organizadas em categorias de modo a facilitar a navegação do utilizador pelas mesmas.
+A criação de necessidades internas da empresa inclui a escolha da categoria a qual associar, conceito adotado na aplicação com o objetivo de facilitar a navegação do utilizador pelas necessidades.
 
 \begin{figure}[H]
     \centering
