@@ -52,7 +52,7 @@ As funcionalidades a que cada \textit{role} (utilizador comum, administrador e \
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{figures/user_admin_owner_scheme.png}
+    \includegraphics[scale=0.35]{figures/user_admin_owner_scheme.png}
     \caption{Funcionalidades a que cada \textit{Role} tem acesso.}\label{fig:uc:user_admin_scheme}
 \end{figure}
 
@@ -242,11 +242,29 @@ As ações possíveis no contexto do ecrâ \textit{Announcements} estão descrit
 
 \section{Plataforma OutSystems}\label{sec:plataformaOutSystems}
 
-A escolha da plataforma \textit{OutSystems~\cite{outsystems}}, para a implementação deste projeto baseia-se essencialmente no facto da mesma ser \textit{low-code},
-apresentando vários benefícios essenciais para um projeto de curto prazo como o apresentado. A rapidez
-com que é possível produzir peças de \textit{software}, as funcionalidades \textit{user-friendly} como \textit{drag and drop} e 
-interfaces de utilizador pré-feitas e a possibilidade de produzir aplicações automaticamente através de
-um simples clique, são elementos essenciais que levaram à escolha desta plataforma. 
+A plataforma OutSystems consiste no desenvolvimento de aplicações através do modelo low code, utilizando uma interface user-friendly com funcionalidades de, por exemplo, drag-and-drop.
+Ao utilizador o modelo low code, esta plataforma fornece os meios de diminuir o tempo de desenvolvimento de um produto software bem como facilitar os ciclos de manutenção.
+A plataforma OutSystems foi inicialmente desenvolvida em Lisboa, Portugal no ano 2001, com a visão de alterar a maneira que as empresas enfrentam o desenvolvimento das suas aplicações~\cite{outsystemsbegin1}.
+Nesta altura, a metodologia mais usada, visto a falta de melhor para o desenvolvimento de aplicações, seria a metodologia, ainda usada hoje em dia, waterfall --- Cascata, que consiste em planear as 
+fases de desenvolvimento de forma sequencial e de maneira a incluir todas as funcionalidades que a aplicação poderá ter bem como realisar uma análise de risco~\cite{outsystemsbegin2}.
+O problema desta metodologia é a sua utilidade na prática, pois realísticamente é muito difícil prever estas situações todas, criando a necessidade de fazer alterações
+à aplicação já após o lançamento. Estas alterações, de forma continua irá chegar a um ponto no qual o custo de gerir os recursos para alterar a aplicação será mais elevado 
+do que lançar um novo produto.
+Tendo isto em mente, o primeiro objetivo da OutSystems foi criar uma plataforma que facilitaria a manutenção de uma aplicação de forma rápida e eficaz, mesmo após o seu lançamento.
+O foco atual da plataforma OutSystems consiste em enfrentar dois pontos de pressão que o mercado de IT atualmente disputa, a transformação digital e a diminuição de tempo para o lançamento de um produto e a sua manutenção~\cite{outsystemsbegin3}.
+Os principais benefícios prometidos pela plataforma OutSystems são~\cite{outsystemsbegin4}:
+\begin{itemize}
+    \item Alta produtividade: Permite realisar e integrar aplicações em semanas ao invés de meses.
+    \item Velocidade e código: Aumento de eficácia na rapidez de desenvolvimento da aplicação mantendo ainda a abilidade de adicionar código manual onde necessário.
+    \item Desenvolvimento multi-canal: Ao utilizar modelos visuais para desenvolver aplicações que suportam qualquer dispositivo ou plataforma. 
+    O risco, tempo e custo de desenvolvimento é significativamente reduzido com lançamentos automatizados e error-free.
+    \item Plataforma integrável: Permite a integração de dados já existentes em outras aplicações.
+    \item Plataforma a nível empreserial: Criação de gestão em grande escala de portfólios de aplicações criadas por equipas de programadores tão fácil como se fosse uma simples aplicação.
+    \item Custos reduzidos: Redução de custos nos recursos necessários para a manutenção de aplicações para uma fração do mesmo com gestão autónoma de dependências e um ciclo de vida de aplicações (ALM) holístico.
+    \item No lock-in: Não existem compiladores ou motores necessários para o lançamento de aplicações OutSystems.
+\end{itemize}
+
+A escolha da plataforma \textit{OutSystems~\cite{outsystems}}, para a implementação deste projeto baseia-se nos aspetos referidos acima.
 \par
 Cada \textit{endpoint} da aplicação está associado a um ecrã com o qual o utilizador interage, havendo uma navegabilidade entre ecrãs que permite que o utilizador visite os diferentes \textit{endpoints} da aplicação.
 A criação e utilização de \textit{blocks} é uma das funcionalidades altamente vantajosas que a plataforma \textit{OutSystems~\cite{outsystems}} apresenta, 
