@@ -42,7 +42,8 @@ Para efeitos de visualização ou modificação do código revisitar a secção 
 ---
 
 ## Utilizadores gerais
-As credenciais listadas seguem o formato.
+As credenciais listadas seguem o formato:
+
 - UserName:
     - Password
 
