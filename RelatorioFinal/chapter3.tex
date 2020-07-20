@@ -85,6 +85,8 @@ Por fim a \textit{ End User Layer} onde são definidos os módulos \textit{UserE
 O tema apresentado em ambos os módulos foi desenvolvido pelo grupo, devido ao facto da solução ser concretizada como uma aplicação \textit{web reactive} e não haver temas já implementados na \textit{forge} da \textit{OutSystems} para este tipo de aplicação. 
 O mesmo foi desenvolvido através da manipulação de \textit{CSS} e de ajustamentos cuidados para apresentar uma \textit{User Interface} apelativa.
 
+\newpage
+
 \section{Modelo de Dados}\label{sec:ModeloDados}
 
 O modelo Entidade-Associação da solução desenvolvida pode ser consultado no anexo~\ref{anexo:modeloEA}
@@ -92,7 +94,7 @@ O conceito predominante no modelo de dados, (figura~\ref{fig:modeloDados}), é o
 
 \begin{figure}[H]
   \centering 
-  \includegraphics[scale=0.4]{figures/DataModel.png}
+  \includegraphics[scale=0.5]{figures/DataModel.png}
   \caption{Modelo de dados}\label{fig:modeloDados}
 \end{figure}
 
@@ -136,12 +138,15 @@ Um utilizador que tenha a permissão de administrador, cujos privilégios inclue
 \par
 Um pequeno exemplo para melhor entendimento deste último atributo é, numa categoria que tenha como conceito a procura de utilizadores para desenvolver peças de software a data associada ás necessidades (atributo \textit{eventDate} da entidade \textit{Necessity}) é de fim da fase de candidaturas para produzir a peça de software em questão, enquanto que uma categoria que tenha como conceito atividades lúdicas terá o atributo \textit{eventDate} das suas necessidades como a data em que o evento irá ocorrer.
 
+\newpage
+
 \section{Implementação}\label{sec:implementacao}
 
 \subsection{Autenticação}\label{subsec:implementacao:login}
 
 Para realizar a autenticação de um utilizador, este introduz as suas credenciais nos respetivos \textit{input fields} e clica no botão \textit{Login}.
 Se as credenciais introduzidas não corresponderem às de nenhum utilizador na base de dados, será apresentada uma mensagem de erro.
+\par
 Um utilizador só terá acesso a outros ecrãs se tiver autenticado, caso contrário será redirecionado para este ecrã, figura~\ref{fig:LoginScreen}.
 
 \begin{figure}[H]
@@ -150,12 +155,15 @@ Um utilizador só terá acesso a outros ecrãs se tiver autenticado, caso contr�
   \caption{Ecrã de autenticação}\label{fig:LoginScreen}
 \end{figure}
 
+\newpage
+
 \subsection{\textit{Back-office}}\label{subsec:implementacao:back-office}
 
 O \textit{back-office} da \textit{Collaboration Platform} tem como principal motivação a manutenção da mesma e o acesso a funcionalidades que requerem permissões superiores, nomeadamente de \textit{admin} ou de \textit{owner}.
 Posto isto, o \textit{back-office} é implementado num novo módulo e apresenta quatro ecrãs distintos. 
+\par
 No ecrã \textit{Necessities} os utilizadores com acesso ao \textit{back-office} têm a possibilidade de verificar as necessidades criadas pela comunidade da empresa, podendo aceitá-las ou eliminá-las. 
-Estas necessidades são apresentadas sobre a forma de uma lista, tal como demonstrado na figura TALXXX. Ao pressionar uma delas, serão apresentados os detalhes da mesma e dois ícones que permitirão aceitar ou rejeitar. 
+Estas necessidades são apresentadas sobre a forma de uma lista, tal como demonstrado na figura~\ref{fig:backoffice_necessities}. Ao pressionar uma delas, serão apresentados os detalhes da mesma e dois ícones que permitirão aceitar ou rejeitar. 
 
 \begin{figure}[H]
   \centering 
@@ -166,7 +174,7 @@ Estas necessidades são apresentadas sobre a forma de uma lista, tal como demons
 
 
 O ecrã \textit{Categories} tem como objetivo a criação e remoção de categorias. 
-As mesmas são apresentadas numa tabela, como é possível verificar na figura TALXXX, e cada uma tem uma checkbox associada que, quando selecionada, irá deixar a categoria apta para ser eliminada, ao carregar no botão delete. 
+As mesmas são apresentadas numa tabela, como é possível verificar na figura figura~\ref{fig:backoffice_categories}, e cada uma tem uma checkbox associada que, quando selecionada, irá deixar a categoria apta para ser eliminada, ao carregar no botão delete. 
 Para criar uma nova, basta carregar no botão create e preencher o nome, se é necessária verificação de presenças por \textit{QR Code} e como é interpretada a data de evento de uma necessidade associada a esta nova categoria.
 
 \begin{figure}[H]
@@ -175,11 +183,12 @@ Para criar uma nova, basta carregar no botão create e preencher o nome, se é n
   \caption{Ecrã das categorias}\label{fig:backoffice_categories}
 \end{figure}
 
+\newpage
 
-
-No ecrã \textit{ManageUsers} é possível ver todos os utilizadores da plataforma separados entre utilizadores comuns e utilizadores com permissões mais elevadas através de duas \textit{tabs}.
-Deste modo, na tab dos utilizadores comuns (representada na figura TALXXX) existe a possibilidade de alterar as permissões associadas a um utilizador, concedendo-lhe permissões superiores através do botão \textit{Grant admin}.
-Na tab de \textit{Admins}, apresentada na figura TALXXX, existe a possibilidade de despromover um utilizador de administrador a utilizador comum, através do botão \textit{revoke admin}. 
+No ecrã \textit{ManageUsers} é possível ver todos os utilizadores da plataforma separados entre utilizadores comuns e utilizadores com permissões mais elevadas, através de duas \textit{tabs}.
+Deste modo, na tab dos utilizadores comuns (representada na figura figura~\ref{fig:backoffice_users_users}) existe a possibilidade de alterar as permissões associadas a um utilizador, concedendo-lhe permissões superiores através do botão \textit{Grant admin}.
+Na tab de \textit{Admins}, apresentada na figura figura~\ref{fig:backoffice_users_admin}, existe a possibilidade de despromover um utilizador de administrador a utilizador comum, através do botão \textit{revoke admin}. 
+\par
 Estas mudanças de \textit{roles} apenas podem ser feitas pelo \textit{owner}, a entidade superior da hierarquia de \textit{roles}. Um utilizador com permissões de administrador apenas pode ver os utilizadores e o seu \textit{role}. 
 
 \begin{figure}[H]
@@ -196,9 +205,10 @@ Estas mudanças de \textit{roles} apenas podem ser feitas pelo \textit{owner}, a
   \caption{Ecrã \textit{ManageUsers} com a tab dos \textit{admins} e \textit{owner} ativa }\label{fig:backoffice_users_admin}
 \end{figure}
 
-Com o intuito de ver as mensagens criadas pela comunidade da empresa, o ecrã \textit{UserMessages} (figura TALXXX) apresenta-as sobre a forma de uma lista e,
+Com o intuito de ver as mensagens criadas pela comunidade da empresa, o ecrã \textit{UserMessages} (figura~\ref{fig:backoffice_user_messages}) apresenta-as sobre a forma de uma lista e,
 ao carregar numa mensagem, é apresentado o detalhe da mesma. 
-Cada utilizador com permisssões para aceder ao \textit{back-office} pode sinalizar uma mensagem que esteja por resolver (\textit{"unresolved"}) como \textit{"resolved"} se aceitar/cumprir o conteúdo da mensagem ou como \textit{"rejected"} se não for o caso.  
+\par
+Cada utilizador com permisssões para aceder ao \textit{back-office} pode sinalizar uma mensagem que esteja por resolver (\textit{"unresolved"}) como  resolvida (\textit{"resolved"}) se aceitar/cumprir o conteúdo da mensagem ou como \textit{"rejected"} se não for o caso.  
 
 \begin{figure}[H]
   \centering 
@@ -206,15 +216,19 @@ Cada utilizador com permisssões para aceder ao \textit{back-office} pode sinali
   \caption{Ecrã \textit{UserMessages}}\label{fig:backoffice_user_messages}
 \end{figure}
 
-
+\newpage
 
 \subsection{\textit{Dashboard}}\label{subsec:implementacao:dashboard}
 
-A um utilizador autenticado é apresentado o ecrã da \textit{dashboard} figura~\ref{fig:Dashboard}, quando inicia a aplicação.
+A um utilizador autenticado é apresentado o ecrã \textit{dashboard}, apresentado na figura~\ref{fig:Dashboard}, assim que inicia sesssão na aplicação.
+\par
 O mesmo apresenta quatro \textit{widgets} que apresentam informação sobre o número de utilizadores que estão \textit{logged in} e o número de necessidades abertas com as suas respetivas prioridades (\textit{high, medium, low}).
+\par
 Este ecrã apresenta também um \textit{widget carousel}, com a descrição \textit{"Recently created necessities"}, a partir do qual é possível observar as necessidades que foram criadas mais recentemente. 
+\par
 Posto isto, do lado direito do \textit{widget carousel}, é demonstrado ao utilizador um gráfico com informação sobre as cinco categorias existentes que apresentam um maior número de necessidades criadas.
 A seleção de uma categoria do gráfico promove a navegação para o ecrã das necessidades,  apresentando a lista das mesmas que pertencem à categoria selecionada.
+\par
 Para cada uma das prioridades que as necessidades podem ter, é apresentado um \textit{ranking} dos utilizadores que mais criaram necessidades, com a respetiva prioridade.
 
 \begin{figure}[H]
@@ -223,19 +237,31 @@ Para cada uma das prioridades que as necessidades podem ter, é apresentado um \
   \caption{\textit{Dashboard}}\label{fig:Dashboard}
 \end{figure}
 
+\newpage
 
 \subsection{Visualização de necessidades}\label{subsec:implementacao:necessities}
 O utilizador ao carregar no botão \textit{Necessities} presente na barra da aplicação, será redirecionado para o ecrã responsável pela apresentação das necessidades, demonstrado na figura~\ref{fig:NecessitiesScreen}. 
+\par
 O intuito do mesmo consiste na apresentação das necessidades criadas pela comunidade empresarial, sendo possível aplicar filtros e/ou pesquisar pelo título de uma necessidade de modo a que sejam apresentadas apenas as necessidades alvo.
+\par
 As necessidades são apresentadas num \textit{widget} tabela, cujas colunas apresentam informação relevante como título, categoria, prioridade, estado, data de criação, data em que a necessidade irá decorrer e o número de participantes. 
+\par
 Sempre que o utilizador pretender criar uma nova necessidade, apenas tem que carregar no botão \textit{Create Necessity} e será redirecionado para um novo ecrã, onde poderá completar a criação.
+\par
 A seleção do título de uma necessidade promove a navegação para o ecrã dos detalhes da mesma.
+\par
 A barra de pesquisa permite que o utilizador procure uma necessidade pelo seu título.
 Os filtros aplicáveis são apresentados em dois \textit{dropdowns}, um para permitir a escolha de qual a prioridade e outro para seleção da(s) categoria(s).
+\par
 O \textit{ widget switch} presente neste ecrã com a descrição \textit{"show only my necessities"}, quando ativo, reorganiza a tabela das necessidades de modo a só mostrar as que o utilizador é autor.
-É importante referir que todas as necessidades apresentadas neste ecrã foram previamente aceites por um utilizador com \textit{role} de \textit{admin} ou \textit{owner} no \textit{back-office}, com exceção de quando o \textit{switch} de mostrar apenas as necessidades do utilizador está ativo, estas aparecem mesmo que ainda não tenham sido aceites, mas apenas ao utilizador que neste caso é sempre o autor das necessidades que aparecem. 
+\par
+É importante referir que todas as necessidades apresentadas neste ecrã foram previamente aceites por um utilizador com \textit{role} de \textit{admin} ou \textit{owner} no \textit{back-office}, com exceção de quando o \textit{switch} de mostrar apenas as necessidades do utilizador está ativo. 
+Neste caso, as necessidades aparecem mesmo que ainda não tenham sido aceites, mas apenas ao utilizador que neste caso é sempre o autor das mesmas. 
+\par
 Sempre que exista uma mudança na seleção de algum dos \textit{widgets} de filtragem de necessidades ou uma introdução de texto na barra de pesquisa, a tabela é atualizada para apresentar apenas aquelas que verifiquem as características alvo. 
+\par
 As informações de cada uma das necessidades, das categorias existentes e das prioridades são obtidas comunicando com o servidor através de \textit{Aggregates}. 
+\par
 Os \textit{Aggregates} são \textit{querys} optimizadas à base de dados de modo a retornar informação de forma eficiente e apresentá-la nos \textit{widgets} do ecrã.
 
 \begin{figure}[H]
@@ -244,18 +270,22 @@ Os \textit{Aggregates} são \textit{querys} optimizadas à base de dados de modo
   \caption{Ecrã das necessidades.}\label{fig:NecessitiesScreen}
 \end{figure}
 
-
+\newpage
 
 \subsection{Visualização de necessidades num calendário}\label{subsec:implementacao:calendarNecessitiesView}
 
-O utilizador ao carregar no botão \textit{Calendar} presente na barra da aplicação, será redirecionado para o ecrã, apresentado na figura~\ref{fig:CalendarScreen} responsável por mostrar, num calendário, todas as necessidades existentes organizadas por datas. 
+O utilizador ao carregar no botão \textit{Calendar} presente na barra da aplicação, será redirecionado para o ecrã (figura~\ref{fig:CalendarScreen}) responsável por mostrar, num calendário, todas as necessidades existentes organizadas por datas. 
+\par
 O objetivo deste ecrã é apresentar de uma forma mais organizada e estruturada todas as necessidades criadas pela empresa, sendo possível filtrá-las. 
+\par
 Foi utilizado o componente \textit{FullCalendarReactive}, presente na \textit{forge} da plataforma \textit{OutSystems}, de modo a apresentar ao utilizador um calendário interativo.
 Para preencher o calendário, para cada necessidade, é criado um objeto \textit{Event} com a sua informação. 
+\par
 Cada necessidade estará representada no calendário com uma cor diferente de forma a distinguir entre necessidades criadas pelo utilizador, necessidades associadas, nomeadamente em que o utilizador participa, e necessidades criadas por outros utlizadores.
 Se o utilizador carregar numa necessidade, este é redirecionado para o seu ecrã de detalhe. 
+\par
 É possível filtrar necessidades pela sua categoria, através de um \textit{popover menu} que contém todas as categorias existentes. 
-Caso seja selecionada uma categoria, são removidas todas as necessidades presentes no calendário, e de seguida, renderizado com as novas necessidades filtradas.
+Caso seja selecionada uma categoria, são removidas todas as necessidades presentes no calendário, e de seguida, o mesmo é renderizado com as novas necessidades filtradas.
 
 \begin{figure}[H]
   \centering 
@@ -263,9 +293,12 @@ Caso seja selecionada uma categoria, são removidas todas as necessidades presen
   \caption{Ecrã do calendário.}\label{fig:CalendarScreen}
 \end{figure}
 
+\newpage
+
 \subsection{Criação e edição de necessidades}\label{subsec:implementacao:necessityCreation}
 
-O ecrã \textit{NecessityCreation} (figura~\ref{fig:necessityCreation1} e~\ref{fig:necessityCreation2}) é utilizado para criar, editar, remover ou ver os detalhes de uma necessidade.
+O ecrã \textit{NecessityCreation} (figura~\ref{fig:necessityCreation1} e~\ref{fig:necessityCreation2}) é utilizado para criar, editar, remover, arquivar ou ver os detalhes de uma necessidade.
+\par
 No momento da criação de uma necessidade os \textit{widgets} presentes neste ecrã permitem que o utilizador indique o título, a descrição, a categoria a qual associar a necessidade, a sua prioridade, 
 se existe filtragem de participantes ou todas as candidaturas são aceites, o número máximo de participantes, uma imagem e um ficheiro para serem associados à necessidade, a data em que a mesma irá decorrer e se é necessário colaborador(es) e a data limite para a(s) sua(s) candidatura(s).
 
@@ -298,11 +331,14 @@ Um utilizador que seja um colaborador de uma dada necessidade pode também edit�
 
 
 É também neste ecrã (figura~\ref{fig:Resources1}) que o utilizador poderá consultar os recursos associados através da navegação até à tab \textit{Resources} e, se for o autor da necessidade, pode adicionar novos recursos ou editar os existentes. 
+\par
 Um utilizador que seja participante numa dada necessidade pode usufruir dos recursos associados à mesma.
 Para um dado recurso, o participante pode escolher usufruir deste pressionando o botão \textit{Confirm Attendance}.
+\par
 O autor da necessidade, assim como os colaboradores associados, podem fazer \textit{download} de um ficheiro \textit{excel} cujo conteúdo consiste nos utilizadores que vão a determinado recurso. 
 Esta funcionalidade permite, de uma forma flexível, saber quem são os participantes que vão a determinado recurso.
 Todos os recursos, com exceção do recurso transporte, têm um \textit{block} que contém um mapa do \textit{Google Maps} através do qual o utilizador pode colocar um marker para dar a conhecer a localização associada ao recurso. 
+\par
 A integração do \textit{Google Maps} (figura~\ref{fig:Resources2}) na plataforma é realizada através da comunicação com a API do \textit{Google Maps}~\cite{google maps api}. 
 Para criar um novo mapa é necessário criar um objeto do tipo \textit{google.maps.Map} que recebe na sua construção o elemento \textit{html} onde o mapa será inserido. 
 Toda a dinâmica de interação com o mapa é gerida pela API através de eventos que são desencadeados com o toque no mesmo. 
@@ -325,6 +361,7 @@ Toda a dinâmica de interação com o mapa é gerida pela API através de evento
 Na última tab do \textit{widget Accordion} presente no ecrã \textit{NecessityCreation} (figura~\ref{fig:participants}) encontra-se a secção relacionada com os participantes à necessidade.
 Toda a dinâmica relativa a esta tab \textit{"Participants"} do ecrã \textit{NecessityCreation} é suportada por um \textit{Web Block} denominado \textit{ParticipantsBlock}.
 Nesta secção um utilizador poderá candidatar-se à posição de colaborador ou participante, de acordo com a fase em que a necessidade se encontra, carregando no \textit{widget link} com o texto \textit{Apply as a Colaborator/Participant} e deixando uma descrição, se a filtragem dos candidatos estiver ativa para aquela necessidade.
+\par
 Um utilizador, ao criar uma necessidade, tem a opção de escolher se todas as candidaturas são aceites ou se o próprio irá proceder à sua filtragem selecionando um dos \textit{widgets radio button}.  
 
 \begin{figure}[H]
@@ -333,7 +370,7 @@ Um utilizador, ao criar uma necessidade, tem a opção de escolher se todas as c
   \caption{Ecrã \textit{Necessity Creation} --- Aba dos participantes - Candidatura.}\label{fig:participants}
 \end{figure}
 
-No caso de um participante querer remover a sua participação a uma dada necessidade, no caso de ainda não ter sido aceite, isto é, a sua candidatura à necessidade está pendente, o cancelamento é instantâneo ao pressionar o botão \textit{Cancel participation} (apresentado no ecrã da (figura~\ref{fig:participants_removal})).
+Considere-se que um participante quer remover a sua participação a uma dada necessidade; no caso de ainda não ter sido aceite, isto é, a sua candidatura à necessidade está pendente, o cancelamento é instantâneo ao pressionar o botão \textit{Cancel participation} (apresentado no ecrã da (figura~\ref{fig:participants_removal})).
 Se já tiver sido aceite, ao carregar no botão \textit{Cancel participation} irá ser enviada uma notificação para o autor e para os colaboradores da necessidade para que removam este participante da lista. 
 O utilizador, ao pressionar este botão, é desencadeada uma \textit{client action} que posteriormente comunica com o servidor através de uma \textit{server action} para que este participante seja marcado para remover na base de dados.
 
@@ -354,17 +391,30 @@ Apenas utilizadores que tenham pedido para cancelar a sua participação podem s
 \end{figure}
 
 
+\newpage
+
+
+\subsection{Geração de \textit{QR Code} para marcação de presença}\label{subsec:implementacao:qrcode}
+
+
+
+
+\newpage
+
 
 
 \subsection{Notificações na plataforma}\label{subsec:implementacao:notificacoes}
 
 A plataforma tem um sistema de notificações que suporta o seu envio para os utilizadores, num ecrã (figura~\ref{fig:notifications}) onde é possível visualizá-las em detalhe. 
-Os cenários possíveis de envio de notificações consistem em: sempre que existir uma nova candidatura a uma dada necessidade o autor da mesma é notificado; 
+\par
+Os cenários possíveis de envio de notificações consistem em: 
+sempre que existir uma nova candidatura a uma dada necessidade o autor da mesma é notificado; 
 quando um utilizador vê a sua candidatura aceite ou não; 
 quando uma necessidade é eliminada ou editada, os participantes da mesma são notificados;
 quando um dado utilizador quer desistir da sua participação a uma necessidade, o autor da mesma recebe uma notificação para remover esse participante;
 quando uma mensagem enviada para os administradores da plataforma foi resolvida ou rejeitada;
 e, por último, quando é o dia em que uma necessidade se vai realizar e a mesma tem \textit{QR code} associado, os participantes recebem uma notificação com um link para o \textit{QR code} gerado.
+\par
 A cada notificação está associado o \textit{id} do utilizador, o que permite que quando o mesmo navegue até ao ecrã das notificações, 
 lhe sejam apresentadas todas as suas notificações que recebeu, provenientes do registo na base de dados.
 
@@ -374,13 +424,16 @@ lhe sejam apresentadas todas as suas notificações que recebeu, provenientes do
   \caption{Ecrã \textit{Notifications}}\label{fig:notifications}
 \end{figure}
 
+\newpage
 
 \subsection{Comunicados na plataforma}\label{subsec:implementacao:comunicados}
 
 A divulgação de comunicados na \textit{Collaboration Platform} tem como objetivo a transmissão de informação de forma uniforme por todos os utilizadores registados.
+\par
 Um utilizador autenticado acede ao ecrã \textit{Announcements} (figura~\ref{fig:announcements}) e verifica os comunicados, apresentados sob a forma de uma lista. 
 A seleção de um destes comunicados apresenta os detalhes do mesmo, visto que cada comunicado é apresentado num \textit{widget Accordion}. 
 Um utilizador com permissões de administrador ou o \textit{owner}, ao navegar para o ecrã \textit{Announcements}, têm a possibilidade de criar um novo comunicado pressionando o botão \textit{Create Announcement}, criação esta que é completada no ecrã \textit{AnnouncementsCreation} (figura~\ref{fig:announcement_creation}).
+\par
 Cada comunicado tem associado um título, uma descrição e, facultativamente, um ficheiro e uma imagem.
 
 \begin{figure}[H]
@@ -397,4 +450,49 @@ Cada comunicado tem associado um título, uma descrição e, facultativamente, u
   \caption{Ecrã \textit{AnnouncementCreation}}\label{fig:announcement_creation}
 \end{figure}
 
+\newpage
 
+\subsection{Implementação de \textit{timers}}\label{subsec:implementacao:timers}
+
+A plataforma \textit{OutSystems~\cite{outsystems}} oferece um serviço, representado na figura~\ref{fig:timers}, que permite executar lógica de forma assíncrona, isto é, executa uma dada ação (\textit{task}) de forma periódica. 
+
+\begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.4]{figures/timers.png}
+  \caption{Timers implementados}\label{fig:timers}
+\end{figure}
+
+Deste modo, no contexto da \textit{Collaboration Platform} foram desenvolvidos três \textit{timers} com propósitos distintos, apresentados na figura~\ref{fig:timers}.
+
+\par
+O \textit{timer RemoveUnusedGoogleMapMarker}, representado na figura~\ref{fig:timer1}, corre semanalmente com o propósito de remover todos os marcadores do \textit{Google Maps} (textit{markers}) que tenham o contador de utilização a 0. 
+\par 
+Este \textit{timer} é necessário devido ao facto dos \textit{markers} serem partilhados entre necessidades, ou seja, necessidades com 
+ a mesma localização partilham o mesmo marcador. Esta otimização permite poupar espaço na base de dados.
+
+ \begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.4]{figures/timer1.png}
+  \caption{\textit{Timer RemoveUnusedGoogleMapMarker}}\label{fig:timer1}
+\end{figure}
+
+
+\par
+O \textit{timer VerifyNecessityDateToGenerateQRCode}, representado na figura~\ref{fig:timer2}, corre diariamente para encontrar as necessidades que irão decorrer no presente dia e que necessitem de QR Code para verificação de presença dos participantes. 
+Quando encontra, procede à geração do QR Code e envia notificações aos participantes da necessidade para que os mesmo o possam apresentar.
+
+\begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.4]{figures/timer2.png}
+  \caption{\textit{Timer VerifyNecessityDateToGenerateQRCode}}\label{fig:timer2}
+\end{figure}
+
+
+\par
+O \textit{timer VerifyNecessityStatus}, representado na figura~\ref{fig:timer3}, corre diariamente para encontrar as necessidades que tenham ocorrido no dia anterior e é imperativo mudar o seu estado de \textit{active} para \textit{closed}. 
+
+\begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.4]{figures/timer3.png}
+  \caption{\textit{Timer VerifyNecessityStatus}}\label{fig:timer3}
+\end{figure}
