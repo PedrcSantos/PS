@@ -108,7 +108,11 @@ Por fim, é apresentado o top 5 de utilizadores que têm mais necessidades criad
 
 \subsection{Registo das necessidades internas da empresa, gestão de candidaturas, associação de recursos, notificações e integração com o google maps}\label{subsec:necessitiesCandidatesNotificationsGoogleMaps}
 
-A criação de necessidades internas da empresa inclui a escolha da categoria a qual associar, conceito adotado na aplicação com o objetivo de facilitar a navegação do utilizador pelas necessidades.
+A principal funcionalidade que a \textit{Collaboration Platform} apresenta é a de gestão das necessidades internas de uma empresa, descrita na figura~\ref{fig:uc:necessities}.
+
+\par
+O conceito subjacente a esta funcionalidade é o de necessidade (\textit{necessity}), que permite virtualizar uma necessidade interna, assegurando os seus detalhes e características.
+Um utilizador autenticado tem a possibilidade de ver necessidades criadas pela comunidade e criar, editar, eliminar ou arquivar uma necessidade da sua autoria.
 
 \begin{figure}[H]
     \centering
@@ -116,10 +120,10 @@ A criação de necessidades internas da empresa inclui a escolha da categoria a 
     \caption{\textit{Use Case} --- Necessidades.}\label{fig:uc:necessities}
 \end{figure}
 
-Para isso, é fundamental que exista um ecrã que apresente todas as necessidades da empresa. 
+\par
+Posto isto, é fundamental que exista um ecrã que apresente todas as necessidades criadas pela comunidade da empresa. 
 Um utilizador, caso queira registar uma necessidade, irá escolher a categoria que melhor se adequa à mesma. 
-Caso não exista, este, se tiver permissões de \textit{admin}, poderá criar uma categoria nova no \textit{back-office}. 
-Neste ecrã será possível filtrar as necessidades pela sua categoria e pelo seu grau de urgência (prioridade).
+
 
 \begin{figure}[H]
     \centering
@@ -127,19 +131,29 @@ Neste ecrã será possível filtrar as necessidades pela sua categoria e pelo se
     \caption{\textit{Use Case} --- Categorias.}\label{fig:uc:categories}
 \end{figure}
 
-Posto isto, definimos um conjunto de filtros que podem ser conjugados de modo a permitir um melhor agrupamento e organização das necessidades. O primeiro consiste na filtragem por categorias, como por exemplo \textit{Brown Bags}, 
+Deste modo, definimos um conjunto de filtros que podem ser conjugados de modo a permitir um melhor agrupamento e organização das necessidades. 
+O primeiro consiste na filtragem por categorias, como por exemplo \textit{Brown Bags}, 
 \textit{Qualification Offers}, \textit{Software Components Development} ou \textit{Planning of Events}. 
+Apenas um utlizador com permissões de administrador ou o \textit{owner} podem criar ou eliminar novas categorias no \textit{back-office} da aplicação, como descrito na figura~\ref{fig:uc:categories}.
+\par
 Foi ainda definido um segundo filtro que poderá tomar os valores \textit{High}, \textit{Medium} ou \textit{Low}, 
 correspondentes ao grau de prioridade com que as necessidades foram criadas. 
+\par
 A seleção dos filtros irá levar a uma atualização da lista para conter apenas necessidades que se enquadrem nessa mesma seleção. 
+\par
 Este ecrã apresenta ainda um botão que servirá para criar uma nova necessidade, criação esta acessível a todos os utilizadores autenticados, 
 que decorrerá num novo ecrã e que terá como opção (obrigatória) de criação os filtros a qual associar a nova necessidade. 
+\par
 Em cada necessidade existe a possibilidade de associar recursos com informações sobre alojamento, refeições, localização do evento ou transporte para o local onde a mesma se irá realizar. Todos os recursos, com exceção do recurso transporte, têm associado um mapa do \textit{Google Maps} onde os utilizadores podem fornecer informações sobre localização.
+\par
 Ao clicar numa necessidade, será apresentado um novo ecrã com os detalhes da mesma, com os recursos associados e também a possibilidade do utilizador se candidatar como colaborador ou participante da necessidade, dependendo da fase em que a mesma se encontra. O autor da necessidade irá receber a notificação de que existe um novo candidato, 
 dando-lhe a opção de após carregar na notificação ser redirecionado para o ecrã de detalhe da necessidade onde pode observar os candidatos. 
+
+\par
 Ao criar uma necessidade o autor tem a possibilidade de escolher se todas as candidaturas à necessidade em causa são aceites automaticamente ou se o próprio escolhe os candidatos com base na descrição dada pelos mesmos.  
 O candidato irá receber uma notificação nos casos em que a necessidade for fechada/cancelada, e quando a sua candidatura for aceite/recusada. 
-Terá também a possibilidade de ver quem já se candidatou á necessidade criada pelo próprio no ecrã de detalhe na parte dos participantes, estando candidatos a colaboradores separados de candidatos a participantes. 
+Terá também a possibilidade de ver quem já se candidatou á necessidade criada pelo próprio no ecrã de detalhe na \textit{aba} dos participantes, estando candidatos a colaboradores separados de candidatos a participantes. 
+\par
 O ecrã que permite mostrar as notificações associadas a cada utilizador é acedido ao carregar no ícone em forma de sino presente na barra da aplicação. Este ícone tem um pequeno contador associado que indica o número de notificações pendentes que cada utilizador tem e, quando pressionado, é apresentado o ecrã das notificações onde as mesmas são apresentadas na forma de uma lista. 
 
 \begin{figure}[H]
@@ -148,20 +162,26 @@ O ecrã que permite mostrar as notificações associadas a cada utilizador é ac
     \caption{\textit{Use Case} --- Necessidade.}\label{fig:uc:necessity}
 \end{figure}
 
-Exemplificando, para organizar eventos ou feiras de emprego, o utilizador seleciona a categoria \textit{Planning of events}.
+Exemplificando, para criar uma necessidade cuja motivação é um eventos ou uma feira de emprego, o utilizador seleciona a categoria \textit{Planning of events}.
 
-Se por outro lado, tivermos o objetivo de realizar apresentações informais de partilha de conhecimento o utilizador seleciona a categoria \textit{Brown Bags}. 
+Se por outro lado, tiver  o objetivo de realizar apresentações informais de partilha de conhecimento, o utilizador seleciona a categoria \textit{Brown Bags}. 
+\par
 Todos os utilizadores devidamente autenticados podem candidatar-se ás necessidades existentes, tendo livre acesso para leitura dos detalhes de cada uma. 
-O autor de uma necessidade é o utilizador que a criou. Tem as permissões de poder editar e eliminar a mesma, associar recursos e gerir participantes/colaboradores.
+\par
+O autor de uma necessidade é o utilizador que a criou. Tem as permissões de poder editar, eliminar ou arquivar a mesma, associar recursos e gerir participantes/colaboradores.
+\par
 No contexto da necessidade, é definida uma linha temporal que consiste numa primeira fase de candidaturas para escolha do orientador 
-(ou orientadores), dando origem ao conceito de \textit{"Collaborator"}. 
-Um utilizador adquire este cargo, para uma dada necessidade, após ser aceite pelo autor da mesma. Este utilizador adquire as mesmas permissões de um participante comum e adquire também as permissões de poder editar a necessidade, com exceção da data do evento e de aceitar ou rejeitar participantes. 
+(ou orientadores), dando origem ao conceito de \textit{"Collaborator"}.  
+Um utilizador adquire este cargo, para uma dada necessidade, após ver a sua candidatura aceite pelo autor da mesma. Este utilizador adquire as mesmas permissões de um participante comum e adquire também as permissões de poder editar a necessidade, com exceção da data do evento e de aceitar ou rejeitar participantes. 
+\par
 O autor de uma necessidade, no ecrã de detalhe da mesma, terá acesso a quem se candidatou para a orientar (ser \textit{Collaborator} nesta necessidade), podendo escolher um ou mais orientadores 
 com base na descrição apresentada pelos mesmos. 
 A linha temporal definida no contexto de uma necessidade tem ainda uma segunda fase de candidaturas para permitir o acesso como participante. 
-Um utilizador torna-se um participante após ser aceite pelo autor no caso de haver filtragem dos candidatos ou, no caso de não se verificar a opção de haver filtragem por parte do autor, a candidatura é aceite automaticamente. 
+Um utilizador torna-se um participante após ser aceite pelo autor no caso de haver filtragem dos candidatos ou, no caso de não se verificar a opção de haver filtragem, a candidatura é aceite automaticamente. 
 O cargo de participante permite também a participação nos recursos associados à necessidade.
+\par
 Todos os utilizadores autenticados podem ver quem foi aceite como participante e como colaborador.
+\par
 Com o intuito de poder realizar a marcação de presenças de cada um dos participantes a uma necessidade, foi introduzido na plataforma o conceito de \textit{QR Code}. 
 Os mesmos são gerados individualmente para cada participante no dia em que o evento terá lugar e os utilizadores com papéis de autor ou colaborador da necessidade podem fazer scan dos \textit{QR Codes} de cada um dos participantes.
 Após o scan de um \textit{QR Code} de um dado participante, o mesmo será sinalizado como presente.
@@ -170,9 +190,13 @@ Após o scan de um \textit{QR Code} de um dado participante, o mesmo será sinal
 
 Com o objetivo de divulgar e calendarizar as necessidades internas da empresa, a barra de navegação da aplicação apresenta um botão com o nome \textit{Calendar} que, quando pressionado, 
 redireciona o utilizador para um ecrã que apresenta um calendário com o qual ele poderá interagir. 
+\par
 Neste calendário são apresentados todos os eventos organizados, na sua respetiva data, e existe a possibilidade de filtrar os eventos em que o utilizador participará. 
+\par
 Após a seleção de um dia no calendário, são apresentadas as necessidades, dando a possibilidade ao utilizador de ver os detalhes individuais após carregar numa delas, 
 num novo ecrã.
+As ações possíveis de utilização deste calendário estão presentes na figura~\ref{fig:uc:calendar}. 
+Uma necessidade, no contexto do calendário, é referida como um evento numa determinada data. 
 
 \begin{figure}[H]
     \centering
@@ -180,13 +204,17 @@ num novo ecrã.
     \caption{\textit{Use case} --- Calendário.}\label{fig:uc:calendar}
 \end{figure}
 
-Para ser possível divulgar as necessidades da empresa de forma uniforme por todos os seus colaboradores, a barra de navegação da aplicação apresentará 
-um botão denominado \textit{Announcements} que, quando carregado, abre um ecrã  (figura~\ref{fig:uc:announcements}) que contém os comunicados sobre a forma de uma lista. 
+Para ser possível divulgar as necessidades da empresa de forma uniforme por todos os seus colaboradores, a barra de navegação da aplicação apresenta
+um botão denominado \textit{Announcements} que, quando pressionado, abre um ecrã que contém os comunicados sobre a forma de uma lista. 
+\par
 Sempre que for emitido um novo comunicado todos os utililizadores recebem uma notificação com o título do mesmo e, ao carregar nessa notificação, são redirecionados para os detalhes do comunicado. 
+\par
 Estes comunicados foram criados por um utilizador com permissões de administrador, sendo visíveis por todos os que estejam autenticados.
+\par
 Um utilizador comum pode, no mesmo ecrã em que são apresentados os comunicados, enviar uma mensagem para outros utilizadores com permissões mais elevadas de modo a comunicar sugestões ou observações. 
 Um exemplo de uma mensagem a enviar pode ser quando é necessário criar uma nova categoria, algo que apenas administradores e o \textit{owner} podem fazer.
 Estas mensagens são apresentadas no \textit{back-office} da plataforma onde cada utilizador que tenha acesso ao mesmo pode concretizar os pedidos que constam nas mensagens, marcando-as como "resolvidas" ou rejeitá-los, marcando-as como "rejeitadas".
+As ações possíveis no contexto do ecrâ \textit{Announcements} estão descritas na figura~\ref{fig:uc:announcements}.
 
 \begin{figure}[H]
     \centering
@@ -201,14 +229,17 @@ apresentando vários benefícios essenciais para um projeto de curto prazo como 
 com que é possível produzir peças de \textit{software}, as funcionalidades \textit{user-friendly} como \textit{drag and drop} e 
 interfaces de utilizador pré-feitas e a possibilidade de produzir aplicações automaticamente através de
 um simples clique, são elementos essenciais que levaram à escolha desta plataforma. 
-Cada \textit{endpoint} da aplicação está associado a um ecrã com o qual o utilizador interage, havendo uma navegabilidade entre ecrãs que permitindo, assim,
- que o utilizador visite os diferentes \textit{endpoints} da aplicação.
+\par
+Cada \textit{endpoint} da aplicação está associado a um ecrã com o qual o utilizador interage, havendo uma navegabilidade entre ecrãs que permite que o utilizador visite os diferentes \textit{endpoints} da aplicação.
 A criação e utilização de \textit{blocks} é uma das funcionalidades altamente vantajosas que a plataforma \textit{OutSystems~\cite{outsystems}} apresenta, 
 visto que permite a reutilização deste componente ao longo da \textit{User Interface --- UI}.
+\par
 A construção da aplicação torna-se bastante rentável, em termos de tempo e facilidade do desenvolvimento, 
 através da conjugação de conceitos como \textit{Widgets}, \textit{Screens} e \textit{Blocks} no domínio da  \textit{UI} 
 e de conceitos como \textit{Server Actions} (ações executadas do lado do servidor), \textit{Client Actions} (ações executadas do lado do cliente) 
 e \textit{Aggregates} (ação com o propósito de aceder à base de dados para retornar informações persistentes na mesma).
+\par
 Também é disponibilizado pela \textit{OutSystems~\cite{outsystems}}, um \textit{eSpace} por \textit{module} que contém elementos essenciais 
 ao desenvolvimento, como os enunciados anteriormente.
+\par
 A base de dados está alojada numa \textit{cloud}, onde são guardadas todas as entidades dos vários módulos.

@@ -1,13 +1,22 @@
-\chapter{Descrição do problema}\label{chapter:description}
+\chapter{Solução proposta}\label{chapter:proposed_solution}
 
 O desenvolvimento de uma plataforma colaborativa apresenta diversos desafios ao nível da sua arquitetura, 
 do modelo de dados a construir e das decisões de implementação ao longo do seu desenvolvimento. 
-Neste capítulo irá ser abordado as decisões tomadas no desenvolvimento do projeto, tendo em conta a plataforma \textit{OutSystems~\cite{outsystems}}. 
-Irá ser feita uma descrição mais detalhada da solução adotada, acompanhada por um diagrama de blocos, que permite esquematizar a mesma.
-
+\par
+Neste capítulo são abordadas as decisões tomadas no desenvolvimento do projeto, tendo em conta a plataforma \textit{OutSystems~\cite{outsystems}}. 
+\par
+Na secção~\ref{sec:diagram} encontra-se o diagrama de blocos da solução.
+\par
+Na secção~\ref{sec:arquitechture} encontra-se uma breve análise da arquitetura da plataforma \textit{OutSystems~\cite{outsystems}} e a arquitetura \textit{4 Layer Canvas} desenvolvida.
+\par
+Na secção~\ref{sec:ModeloDados} encontra-se o modelo de dados e uma síntese do mesmo.
+\par 
+Na secção~\ref{sec:implementacao} encontram-se todos os detalhes e abordagens adotadas na implementação da solução.
 
 \section{Diagrama de blocos da solução}\label{sec:diagram}
 A figura~\ref{fig:diagram} apresenta o diagrama de blocos da plataforma \textit{Corporate Collaboration}. 
+\par
+No mesmo constam as permissões (\textit{roles}) que um utilizador registado pode apresentar e quais as funcionalidades a que cada \textit{role} pode aceder nos módulos constituintes da aplicação, \textit{UserEndPoints} e \textit{Back-Office}. 
 
 \begin{figure}[H]
   \centering
@@ -65,12 +74,20 @@ e não havendo necessidade de coordenar interações com outras aplicações na 
 Posto isto, a nossa aplicação assenta sobre cinco módulos, representados pela figura~\ref{fig:4lc}.
 
 Começando pela \textit{Library Layer} verificamos que são utilizados os módulos relativos à integração da aplicação 
-com o \textit{Google Maps} e com o \textit{Full Calendar Reactive}. De seguida temos a \textit{ Core Layer}, 
-onde definimos as entidades de domínio e suas operações. Por fim a \textit{ End User Layer} onde são definidos 
-os ecrãs e a lógica de cliente. 
+com o \textit{Google Maps}, o que possibilita a apresentação de mapas nos recursos de uma necessidade (descrito na subsecção~\ref{subsec:implementacao:necessityCreation}), e com o \textit{Full Calendar Reactive} que é utilizado para apresentar o calendário no ecrã \textit{Calendar} descrito na subsecção~\ref{subsec:implementacao:calendarNecessitiesView}. 
 
-\section{Modelo de Dados}\label{subsec:ModeloDados}
+\par
+De seguida temos a \textit{ Core Layer}, 
+onde definimos as entidades de domínio e operações de acesso ao servidor. Toda esta dinâmica está implementada através do módulo \textit{ServerLogic}, onde é coordenada toda a lógica de negócio da aplicação. 
+\par
+Por fim a \textit{ End User Layer} onde são definidos os módulos \textit{UserEndPoints} e \textit{Back-Office} que suportam os ecrãs e a lógica de cliente. 
+\par
+O tema apresentado em ambos os módulos foi desenvolvido pelo grupo, devido ao facto da solução ser concretizada como uma aplicação \textit{web reactive} e não haver temas já implementados na \textit{forge} da \textit{OutSystems} para este tipo de aplicação. 
+O mesmo foi desenvolvido através da manipulação de \textit{CSS} e de ajustamentos cuidados para apresentar uma \textit{User Interface} apelativa.
 
+\section{Modelo de Dados}\label{sec:ModeloDados}
+
+O modelo Entidade-Associação da solução desenvolvida pode ser consultado no anexo~\ref{anexo:modeloEA}
 O conceito predominante no modelo de dados, (figura~\ref{fig:modeloDados}), é o de necessidade, representado pela tabela \textit{Necessity}.
 
 \begin{figure}[H]
@@ -81,29 +98,42 @@ O conceito predominante no modelo de dados, (figura~\ref{fig:modeloDados}), é o
 
  
 Uma necessidade é caracterizada por diversos elementos dos quais destacamos o \textit{Status} que referencia uma tabela estática (\textit{NecessityStatus}) que contém os valores possíveis do estado da necessidade, 
-podendo ter os valores \"Closed\", \"Active\" ou \"Archived\". A \textit{CurrentPhase} que indica a fase de candidaturas atual, 
+podendo ter os valores \"Closed\", \"Active\" ou \"Archived\". 
+\par
+A \textit{CurrentPhase} que indica a fase de candidaturas atual, 
 podendo ser para colaboradores ou participantes, a \textit{ColaboratorDate} que representa a data limite das candidaturas 
 à posição de colaborador, \textit{AcceptanceSettings} que indica se para a necessidade em causa são aceites todos os participantes ou se existe uma filtragem por parte do autor, 
 \textit{isAcceptedByAdmin} que indica se a necessidade criada já foi aceite por um administrador ou pelo \textit{owner} no \textit{back-office}, 
 \textit{ParticipantsCounter} que indica o número de participantes desta necessidade, e por último, \textit{MaxParticipants} que serve para guardar o número máximo de participantes que podem existir nesta necessidade. 
+\par
 As tabelas \textit{NecessityImage} e \textit{NecessityFile} existem para o propósito de guardar ficheiros, 
 aliviando a quantidade de dados guardada em cada tuplo \textit{Necessity}, 
 seguindo também as boas práticas da plataforma \textit{OutSystems~\cite{outsystems}}.
+\par
 A entidade estática \textit{Priorities} contém os valores possíveis das prioridades que cada necessidade pode ter.
+\par
 Associado ao conceito de necessidade está o de recurso, que tem como objetivo acrescentar informação à necessidade de uma forma flexível. 
 Para suportar este conceito foi definida a entidade estática \textit{ResourcesType} cujos valores representam os tipos de recursos que um utilizador pode, facultativamente, acrescentar à necessidade, consistindo em acomodação, restaurante e menus de refeições, localização do evento ou transporte. 
 A representação de um recurso no modelo de dados traduz-se na entidade \textit{NecessityResource} que guarda informações de cada recurso como o seu tipo (referência à tabela  \textit{ResourcesType}), a sua descrição, o id da necessidade a que o mesmo pertence e, como todos os recursos à exceção do relativo ao transporte têm um mapa do \textit{Google Maps} associado
 , o último atributo da tabela \textit{NecessityResource} é um id do marcador do mapa associado ao recurso.
+\par
 Com o objetivo de guardar informação sobre os participantes de uma necessidade, é definida a entidade \texttt{\textit{Necessity\char`_Participants}} que 
 contempla o identificador da necessidade, o identificador do utilizador, a descrição associada à candidatura, 
 se esta candidatura é para posição de colaborador ou de participante, a data da candidatura, se o utilizador participou na necessidade, qual o estado da candidatura (dado pela entidade estática \textit{ParticipantStatus}, cujos valores representam se a candidatura está pendente - \textit{pending}, aceite - \textit{accepted} ou rejeitada - \textit{rejected}) e se este participante pediu para remover a sua participação na necessidade e está assinalado para remoção da lista de participantes. 
+\par
 De modo a que seja possível guardar informação sobre se um participante vai usufruir dos recursos associados a uma necessidade, é definida a entidade \texttt{\textit{Resource\char`_Participants}}.
 Esta entidade guarda informações como a descrição da escolha do recurso, o id do participante e o id do recurso.
+\par
 Com o intuito de suportar a funcionalidade de envio de mensagens entre utilizadores comuns e utilizadores com permissões mais elevadas, foi criada a tabela \textit{MessageToAdmin}. 
 Esta tabela tem os atributos necessários para armazenar o tópico de uma mensagem, o seu conteúdo, o utilizador que a criou, a sua data de criação e, por último, o estado da mesma, que pode tomar os valores presentes na entidade estática \textit{ParticipantStatus}. 
 Estes valores são \textit{accepted} para mensagens cujo conteúdo foi cumprido ou aceitado, \textit{rejected} para mensagens cujo conteúdo não o foi e \textit{pending} para aquelas que ainda não obtiveram resposta.
-Os comunicados feitos na plataforma são suportados pela entidade \textit{Announcements}. As notificações apresentadas na plataforma são suportadas pela entidade \textit{Notifications} em que cada notificação está associada a um utilizador através do seu id, o seu conteúdo é guardado no atributo \textit{Info} e a hora da emissão da notificação no atributo \textit{DateTime}. 
-Um utilizador pode ainda ter o cargo de administrador, cujos privilégios incluem editar as categorias representadas pela entidade \textit{Category}. Esta entidade tem como atributos o nome da categoria criada, se é uma categoria cujas necessidades vão necessitar de confirmação de presença através de \textit{QR Code}, quantidade de necessidades criadas associadas a esta categoria e se o dia do evento presente em cada necessidade associada a esta categoria corresponde ao dia em que o evento tem lugar ou simplesmente ao final da data de candidaturas. 
+\par
+Os comunicados feitos na plataforma são suportados pela entidade \textit{Announcements}. 
+\par
+As notificações apresentadas na plataforma são suportadas pela entidade \textit{Notifications} em que cada notificação está associada a um utilizador através do seu id, o seu conteúdo é guardado no atributo \textit{Info} e a hora da emissão da notificação no atributo \textit{DateTime}. 
+\par
+Um utilizador que tenha a permissão de administrador, cujos privilégios incluem editar as categorias representadas pela entidade \textit{Category}. Esta entidade tem como atributos o nome da categoria criada, se é uma categoria cujas necessidades vão necessitar de confirmação de presença através de \textit{QR Code}, quantidade de necessidades criadas associadas a esta categoria e se o dia do evento presente em cada necessidade associada a esta categoria corresponde ao dia em que o evento tem lugar ou simplesmente ao final da data de candidaturas. 
+\par
 Um pequeno exemplo para melhor entendimento deste último atributo é, numa categoria que tenha como conceito a procura de utilizadores para desenvolver peças de software a data associada ás necessidades (atributo \textit{eventDate} da entidade \textit{Necessity}) é de fim da fase de candidaturas para produzir a peça de software em questão, enquanto que uma categoria que tenha como conceito atividades lúdicas terá o atributo \textit{eventDate} das suas necessidades como a data em que o evento irá ocorrer.
 
 \section{Implementação}\label{sec:implementacao}
