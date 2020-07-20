@@ -20,7 +20,7 @@ No mesmo constam as permissões (\textit{roles}) que um utilizador registado pod
 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.4]{figures/Diagrama de blocos.png}
+  \includegraphics[scale=0.5]{figures/Diagrama de blocos.png}
   \caption{Diagrama de blocos da aplicação}\label{fig:diagram}
 \end{figure}
 
@@ -100,7 +100,7 @@ O conceito predominante no modelo de dados, (figura~\ref{fig:modeloDados}), é o
 
  
 Uma necessidade é caracterizada por diversos elementos dos quais destacamos o \textit{Status} que referencia uma tabela estática (\textit{NecessityStatus}) que contém os valores possíveis do estado da necessidade, 
-podendo ter os valores \"Closed\", \"Active\" ou \"Archived\". 
+podendo ter os valores \textit{"Closed"}, \textit{"Active"} ou \textit{"Archived"}. 
 \par
 A \textit{CurrentPhase} que indica a fase de candidaturas atual, 
 podendo ser para colaboradores ou participantes, a \textit{ColaboratorDate} que representa a data limite das candidaturas 
@@ -394,12 +394,33 @@ Apenas utilizadores que tenham pedido para cancelar a sua participação podem s
 \newpage
 
 
-\subsection{Geração de \textit{QR Code} para marcação de presença}\label{subsec:implementacao:qrcode}
+\subsection{Geração e leitura de \textit{QR Code} para marcação de presença}\label{subsec:implementacao:qrcode}
 
-
+A geração de \textit{QR code}, para a confirmação de presença numa necessidade caso a categoria da mesma suporte QR code,
+ é feita pelo \textit{timer VerifyNecessityDateToGenerateQRCode} (ver subsecção~\ref{subsec:implementacao:timers}) no dia de evento definido pelo autor. 
+\par
+ Para cada participante será gerado um QR code único para ser lido por um colaborador ou o próprio autor da necessidade em questão.
+\par
+Semelhante à metodologia de geração de QR codes, é disponibilizado um ecrã de leitura de QR codes apenas visível a colaboradores e autores das respectivas necessidades, estes são notificados da disponibilização do ecrã.
+Neste ecrã irá ser pedido ao utilizador permissões de utilização da câmara para realizar uma leitura contínua de QR codes pressionando no botão \textit{Scan QR Codes} e de seguida no \textit{Capture} para capturar o conteúdo visto na câmara, se existir um QR code irá ser apresentado uma mensagem de sucesso caso contrário uma mensagem de erro a avisar o utilizador que não foi possível encontrar nenhum QR code.
 
 
 \newpage
+
+
+\subsection{Edição de perfil do utilizador}\label{subsec:implementacao:editprofile}
+
+Com o objetivo de editar o seu perfil, um utilizador ao carregar no seu nome navega até ao ecrã \textit{UserDetail}, representado na figura~\ref{fig:user_detail}. 
+\par
+No contexto deste ecrã, um utilizador tem oportunidade de alterar os campos associados ao seu perfil, nomeadamente o seu nome, nome de utilizador, email, número de telefone e a imagem de perfil.
+\par 
+É importante referir que o \textit{upload} de imagens ou ficheiros de tamanho considerável faz com que a comunicação com o servidor se torne lenta e, em casos extremos, a mesma pode resultar numa exceção do tipo \textit{"connection timed out"}.
+ 
+\begin{figure}[H]
+  \centering 
+  \includegraphics[scale=0.4]{figures/user_detail.png}
+  \caption{Ecrã \textit{UserDetail} }\label{fig:user_detail}
+\end{figure}
 
 
 
